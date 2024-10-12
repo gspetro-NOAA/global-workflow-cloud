@@ -1,0 +1,751 @@
+<?xml version="1.0"?>
+<!DOCTYPE workflow
+[
+	<!--
+	PROGRAM
+		Main workflow manager for Global Forecast System
+
+	NOTES:
+		This workflow was automatically generated at 2024-09-28 17:12:21.017930
+	-->
+	<!ENTITY PSLOT "c96sfs">
+	<!ENTITY ROTDIR "/work2/noaa/da/weihuang/run/COMROOT/c96sfs">
+	<!ENTITY JOBS_DIR "/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto">
+	<!ENTITY MAXTRIES "2">
+]>
+
+<workflow realtime="F" scheduler="slurm" cyclethrottle="3" taskthrottle="25">
+
+	<log verbosity="10"><cyclestr>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs/logs/@Y@m@d@H.log</cyclestr></log>
+
+	<!-- Define the cycles -->
+	<cycledef group="gefs">199405010000 199405010000 24:00:00</cycledef>
+
+<task name="stage_ic" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+	<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/stage_ic.sh</command>
+
+	<jobname><cyclestr>c96sfs_stage_ic_@H</cyclestr></jobname>
+	<account>epic</account>
+	<queue>batch</queue>
+	<partition>hercules</partition>
+	<walltime>00:15:00</walltime>
+	<nodes>1:ppn=1:tpp=1</nodes>
+	<native>--exclusive</native>
+
+	<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/stage_ic.log</cyclestr></join>
+
+	<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+	<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+	<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+	<envar><name>NET</name><value>gefs</value></envar>
+	<envar><name>RUN</name><value>gefs</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+	<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+	<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+
+</task>
+
+<metatask name="fcst_mem000" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem000_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem000_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem000_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem001" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem001_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem001_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem001_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>001</value></envar>
+		<envar><name>MEMDIR</name><value>mem001</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem002" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem002_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem002_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem002_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>002</value></envar>
+		<envar><name>MEMDIR</name><value>mem002</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem003" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem003_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem003_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem003_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>003</value></envar>
+		<envar><name>MEMDIR</name><value>mem003</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem004" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem004_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem004_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem004_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>004</value></envar>
+		<envar><name>MEMDIR</name><value>mem004</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem005" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem005_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem005_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem005_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>005</value></envar>
+		<envar><name>MEMDIR</name><value>mem005</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem006" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem006_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem006_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem006_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>006</value></envar>
+		<envar><name>MEMDIR</name><value>mem006</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem007" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem007_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem007_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem007_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>007</value></envar>
+		<envar><name>MEMDIR</name><value>mem007</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem008" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem008_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem008_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem008_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>008</value></envar>
+		<envar><name>MEMDIR</name><value>mem008</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem009" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem009_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem009_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem009_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>009</value></envar>
+		<envar><name>MEMDIR</name><value>mem009</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="fcst_mem010" mode="serial">
+
+	<var name="seg">0 1</var>
+
+	<task name="fcst_mem010_seg#seg#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/fcst.sh</command>
+
+		<jobname><cyclestr>c96sfs_fcst_mem010_seg#seg#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>03:00:00</walltime>
+		<nodes>1:ppn=80:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/fcst_mem010_seg#seg#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>ENSMEM</name><value>010</value></envar>
+		<envar><name>MEMDIR</name><value>mem010</value></envar>
+		<envar><name>FCST_SEGMENT</name><value>#seg#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="stage_ic"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="atmos_prod" mode="parallel">
+
+	<var name="member">000 001 002 003 004 005 006 007 008 009 010</var>
+
+	<metatask name="atmos_prod_#member#" mode="parallel">
+
+		<var name="fhr">006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120</var>
+
+		<task name="atmos_prod_mem#member#_f#fhr#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+			<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/atmos_products.sh</command>
+
+			<jobname><cyclestr>c96sfs_atmos_prod_mem#member#_f#fhr#_@H</cyclestr></jobname>
+			<account>epic</account>
+			<queue>batch</queue>
+			<partition>hercules</partition>
+			<walltime>00:15:00</walltime>
+			<nodes>1:ppn=24:tpp=1</nodes>
+			<native>--exclusive</native>
+
+			<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/atmos_prod_mem#member#_f#fhr#.log</cyclestr></join>
+
+			<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+			<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+			<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+			<envar><name>NET</name><value>gefs</value></envar>
+			<envar><name>RUN</name><value>gefs</value></envar>
+			<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+			<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+			<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+			<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+			<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+			<envar><name>ENSMEM</name><value>#member#</value></envar>
+			<envar><name>MEMDIR</name><value>mem#member#</value></envar>
+			<envar><name>FHR3</name><value>#fhr#</value></envar>
+			<envar><name>COMPONENT</name><value>atmos</value></envar>
+
+			<dependency>
+				<or>
+					<datadep age="120"><cyclestr>&ROTDIR;/gefs.@Y@m@d/@H/mem#member#/model/atmos/master/gefs.t@Hz.master.grb2f#fhr#</cyclestr></datadep>
+					<metataskdep metatask="fcst_mem#member#"/>
+				</or>
+			</dependency>
+
+		</task>
+
+	</metatask>
+
+</metatask>
+
+<metatask name="atmos_ensstat" mode="parallel">
+
+	<var name="fhr">006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120</var>
+
+	<task name="atmos_ensstat_f#fhr#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+		<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/atmos_ensstat.sh</command>
+
+		<jobname><cyclestr>c96sfs_atmos_ensstat_f#fhr#_@H</cyclestr></jobname>
+		<account>epic</account>
+		<queue>batch</queue>
+		<partition>hercules</partition>
+		<walltime>00:30:00</walltime>
+		<nodes>1:ppn=6:tpp=1</nodes>
+		<native>--exclusive</native>
+
+		<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/atmos_ensstat_f#fhr#.log</cyclestr></join>
+
+		<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+		<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+		<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+		<envar><name>NET</name><value>gefs</value></envar>
+		<envar><name>RUN</name><value>gefs</value></envar>
+		<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+		<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+		<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+		<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+		<envar><name>FHR3</name><value>#fhr#</value></envar>
+
+		<dependency>
+			<and>
+				<taskdep task="atmos_prod_mem000_f#fhr#"/>
+				<taskdep task="atmos_prod_mem001_f#fhr#"/>
+				<taskdep task="atmos_prod_mem002_f#fhr#"/>
+				<taskdep task="atmos_prod_mem003_f#fhr#"/>
+				<taskdep task="atmos_prod_mem004_f#fhr#"/>
+				<taskdep task="atmos_prod_mem005_f#fhr#"/>
+				<taskdep task="atmos_prod_mem006_f#fhr#"/>
+				<taskdep task="atmos_prod_mem007_f#fhr#"/>
+				<taskdep task="atmos_prod_mem008_f#fhr#"/>
+				<taskdep task="atmos_prod_mem009_f#fhr#"/>
+				<taskdep task="atmos_prod_mem010_f#fhr#"/>
+			</and>
+		</dependency>
+
+	</task>
+
+</metatask>
+
+<metatask name="ocean_prod" mode="parallel">
+
+	<var name="member">000 001 002 003 004 005 006 007 008 009 010</var>
+
+	<metatask name="ocean_prod_#member#" mode="parallel">
+
+		<var name="fhr">006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120</var>
+		<var name="fhr_next">012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120 126</var>
+
+		<task name="ocean_prod_mem#member#_f#fhr#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+			<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/oceanice_products.sh</command>
+
+			<jobname><cyclestr>c96sfs_ocean_prod_mem#member#_f#fhr#_@H</cyclestr></jobname>
+			<account>epic</account>
+			<queue>batch</queue>
+			<partition>hercules</partition>
+			<walltime>00:15:00</walltime>
+			<nodes>1:ppn=1:tpp=1</nodes>
+			<memory>96GB</memory>
+			<native>--export=NONE</native>
+
+			<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/ocean_prod_mem#member#_f#fhr#.log</cyclestr></join>
+
+			<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+			<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+			<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+			<envar><name>NET</name><value>gefs</value></envar>
+			<envar><name>RUN</name><value>gefs</value></envar>
+			<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+			<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+			<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+			<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+			<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+			<envar><name>ENSMEM</name><value>#member#</value></envar>
+			<envar><name>MEMDIR</name><value>mem#member#</value></envar>
+			<envar><name>FHR3</name><value>#fhr#</value></envar>
+			<envar><name>COMPONENT</name><value>ocean</value></envar>
+
+			<dependency>
+				<or>
+					<datadep age="120"><cyclestr>&ROTDIR;/gefs.@Y@m@d/@H/mem#member#/model/ocean/history/gefs.ocean.t@Hz.6hr_avg.f#fhr_next#.nc</cyclestr></datadep>
+					<metataskdep metatask="fcst_mem#member#"/>
+				</or>
+			</dependency>
+
+		</task>
+
+	</metatask>
+
+</metatask>
+
+<metatask name="ice_prod" mode="parallel">
+
+	<var name="member">000 001 002 003 004 005 006 007 008 009 010</var>
+
+	<metatask name="ice_prod_#member#" mode="parallel">
+
+		<var name="fhr">006 012 018 024 030 036 042 048 054 060 066 072 078 084 090 096 102 108 114 120</var>
+
+		<task name="ice_prod_mem#member#_f#fhr#" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+			<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/oceanice_products.sh</command>
+
+			<jobname><cyclestr>c96sfs_ice_prod_mem#member#_f#fhr#_@H</cyclestr></jobname>
+			<account>epic</account>
+			<queue>batch</queue>
+			<partition>hercules</partition>
+			<walltime>00:15:00</walltime>
+			<nodes>1:ppn=1:tpp=1</nodes>
+			<memory>96GB</memory>
+			<native>--export=NONE</native>
+
+			<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/ice_prod_mem#member#_f#fhr#.log</cyclestr></join>
+
+			<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+			<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+			<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+			<envar><name>NET</name><value>gefs</value></envar>
+			<envar><name>RUN</name><value>gefs</value></envar>
+			<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+			<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+			<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+			<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+			<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+			<envar><name>ENSMEM</name><value>#member#</value></envar>
+			<envar><name>MEMDIR</name><value>mem#member#</value></envar>
+			<envar><name>FHR3</name><value>#fhr#</value></envar>
+			<envar><name>COMPONENT</name><value>ice</value></envar>
+
+			<dependency>
+				<or>
+					<datadep age="120"><cyclestr>&ROTDIR;/gefs.@Y@m@d/@H/mem#member#/model/ice/history/gefs.ice.t@Hz.6hr_avg.f#fhr#.nc</cyclestr></datadep>
+					<metataskdep metatask="fcst_mem#member#"/>
+				</or>
+			</dependency>
+
+		</task>
+
+	</metatask>
+
+</metatask>
+
+<task name="cleanup" cycledefs="gefs" maxtries="&MAXTRIES;">
+
+	<command>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil/jobs/rocoto/cleanup.sh</command>
+
+	<jobname><cyclestr>c96sfs_cleanup_@H</cyclestr></jobname>
+	<account>epic</account>
+	<queue>batch</queue>
+	<partition>hercules</partition>
+	<walltime>00:15:00</walltime>
+	<nodes>1:ppn=1:tpp=1</nodes>
+	<memory>4096M</memory>
+	<native>--export=NONE</native>
+
+	<join><cyclestr>/work2/noaa/da/weihuang/run/COMROOT/c96sfs/logs/@Y@m@d@H/cleanup.log</cyclestr></join>
+
+	<envar><name>RUN_ENVIR</name><value>emc</value></envar>
+	<envar><name>HOMEgfs</name><value>/work/noaa/epic/weihuang/src/sfs-global-workflow-neil</value></envar>
+	<envar><name>EXPDIR</name><value>/work2/noaa/da/weihuang/run/EXPDIR/c96sfs</value></envar>
+	<envar><name>NET</name><value>gefs</value></envar>
+	<envar><name>RUN</name><value>gefs</value></envar>
+	<envar><name>CDATE</name><value><cyclestr>@Y@m@d@H</cyclestr></value></envar>
+	<envar><name>PDY</name><value><cyclestr>@Y@m@d</cyclestr></value></envar>
+	<envar><name>cyc</name><value><cyclestr>@H</cyclestr></value></envar>
+	<envar><name>COMROOT</name><value>/work2/noaa/da/weihuang/run/COMROOT</value></envar>
+	<envar><name>DATAROOT</name><value>/work2/noaa/da/weihuang/HERCULES/RUNDIRS/c96sfs/gefs.<cyclestr>@Y@m@d@H</cyclestr></value></envar>
+
+	<dependency>
+		<and>
+			<metataskdep metatask="atmos_prod"/>
+			<metataskdep metatask="atmos_ensstat"/>
+			<metataskdep metatask="ice_prod"/>
+			<metataskdep metatask="ocean_prod"/>
+		</and>
+	</dependency>
+
+</task>
+
+</workflow>

@@ -1,0 +1,27 @@
+base:
+  DO_JEDIATMVAR: "NO"
+  DO_JEDIATMENS: "NO"
+  DO_JEDIOCNVAR: "NO"
+  DO_JEDISNOWDA: "NO"
+  DO_MERGENSST: "NO"
+  DO_BUFRSND: "NO"
+  DO_GEMPAK: "NO"
+  DO_AWIPS: "NO"
+  DO_GENESIS_FSU: "NO"
+  KEEPDATA: "YES"
+  ESMF_PROFILE: "YES"
+  FHMAX_GFS: 2976
+  FHMAX_HF_GFS: 0
+  DO_EXTRACTVARS: "NO"
+  HPSSARCH: "NO"
+  LOCALARCH: "NO"
+  USE_OCN_PERTURB_FILES: "false"
+  REPLAY_ICS: "NO"
+  FCST_BREAKPOINTS: "600"
+  FLTFILEGFS: "postxconfig-NT-SFS.txt"
+  FLTFILEGFSF00: "postxconfig-NT-SFS.txt"
+  ACCOUNT: {{ 'HPC_ACCOUNT' | getenv }}
+  BASE_IC: /work2/noaa/epic/weihuang/ICs/REPLAY_ICs/C96mx100
+fcst:
+  TYPE: "hydro"
+  MONO: "mono"

@@ -1,0 +1,91 @@
+2024-09-28 21:05:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting stage_ic
+2024-09-28 21:05:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of stage_ic succeeded, jobid=2678420
+2024-09-28 21:07:26 -0500 :: hercules-login-1.hpc.msstate.edu :: Task stage_ic, jobid=2678420, in state SUCCEEDED (COMPLETED), ran for 77.0 seconds, exit status=0, try=1 (of 1)
+2024-09-28 21:07:26 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem000_seg0
+2024-09-28 21:07:27 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem001_seg0
+2024-09-28 21:07:27 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem002_seg0
+2024-09-28 21:07:27 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem003_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem004_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem005_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem006_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem007_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem008_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem009_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem010_seg0
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem000_seg0 succeeded, jobid=2678423
+2024-09-28 21:07:29 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem001_seg0 succeeded, jobid=2678424
+2024-09-28 21:07:30 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem002_seg0 succeeded, jobid=2678425
+2024-09-28 21:07:30 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem003_seg0 succeeded, jobid=2678426
+2024-09-28 21:07:30 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem004_seg0 succeeded, jobid=2678427
+2024-09-28 21:07:30 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem005_seg0 succeeded, jobid=2678428
+2024-09-28 21:07:30 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem006_seg0 succeeded, jobid=2678429
+2024-09-28 21:07:30 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem007_seg0 succeeded, jobid=2678430
+2024-09-28 21:07:31 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem008_seg0 succeeded, jobid=2678431
+2024-09-28 21:07:31 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem009_seg0 succeeded, jobid=2678432
+2024-09-28 21:07:31 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem010_seg0 succeeded, jobid=2678433
+2024-09-28 21:10:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem000_seg0, jobid=2678423, in state DEAD (FAILED), ran for 67.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem001_seg0, jobid=2678424, in state DEAD (FAILED), ran for 78.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem002_seg0, jobid=2678425, in state DEAD (FAILED), ran for 77.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem003_seg0, jobid=2678426, in state DEAD (FAILED), ran for 78.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem004_seg0, jobid=2678427, in state DEAD (FAILED), ran for 78.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem005_seg0, jobid=2678428, in state DEAD (FAILED), ran for 79.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem006_seg0, jobid=2678429, in state DEAD (FAILED), ran for 76.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem007_seg0, jobid=2678430, in state DEAD (FAILED), ran for 77.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem008_seg0, jobid=2678431, in state DEAD (FAILED), ran for 77.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem009_seg0, jobid=2678432, in state DEAD (FAILED), ran for 80.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:10:08 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem010_seg0, jobid=2678433, in state DEAD (FAILED), ran for 75.0 seconds, exit status=1, try=1 (of 1)
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem000_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem001_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem002_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem003_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem004_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem005_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem006_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem007_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem008_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem009_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem010_seg0 has been resurrected.  1 more tries will be allowed
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem000_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem001_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem002_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem003_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem004_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem005_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem006_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem007_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem008_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem009_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submitting fcst_mem010_seg0
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem000_seg0 succeeded, jobid=2678436
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem001_seg0 succeeded, jobid=2678437
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem002_seg0 succeeded, jobid=2678438
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem003_seg0 succeeded, jobid=2678439
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem004_seg0 succeeded, jobid=2678440
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem005_seg0 succeeded, jobid=2678441
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem006_seg0 succeeded, jobid=2678442
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem007_seg0 succeeded, jobid=2678443
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem008_seg0 succeeded, jobid=2678444
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem009_seg0 succeeded, jobid=2678445
+2024-09-28 21:15:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Submission of fcst_mem010_seg0 succeeded, jobid=2678446
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem000_seg0, jobid=2678436, in state RUNNING (RUNNING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem001_seg0, jobid=2678437, in state RUNNING (RUNNING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem002_seg0, jobid=2678438, in state RUNNING (RUNNING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem003_seg0, jobid=2678439, in state RUNNING (RUNNING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem004_seg0, jobid=2678440, in state QUEUED (PENDING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem005_seg0, jobid=2678441, in state QUEUED (PENDING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem006_seg0, jobid=2678442, in state QUEUED (PENDING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem007_seg0, jobid=2678443, in state QUEUED (PENDING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem008_seg0, jobid=2678444, in state QUEUED (PENDING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem009_seg0, jobid=2678445, in state QUEUED (PENDING)
+2024-09-28 21:15:14 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem010_seg0, jobid=2678446, in state QUEUED (PENDING)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem000_seg0, jobid=2678436, in state DEAD (FAILED), ran for 106.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem001_seg0, jobid=2678437, in state DEAD (FAILED), ran for 127.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem002_seg0, jobid=2678438, in state DEAD (FAILED), ran for 134.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem003_seg0, jobid=2678439, in state DEAD (FAILED), ran for 133.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem004_seg0, jobid=2678440, in state DEAD (FAILED), ran for 136.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem005_seg0, jobid=2678441, in state DEAD (FAILED), ran for 136.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem006_seg0, jobid=2678442, in state DEAD (FAILED), ran for 136.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem007_seg0, jobid=2678443, in state DEAD (FAILED), ran for 135.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem008_seg0, jobid=2678444, in state DEAD (FAILED), ran for 134.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem009_seg0, jobid=2678445, in state DEAD (FAILED), ran for 134.0 seconds, exit status=1, try=2 (of 2)
+2024-09-28 21:20:07 -0500 :: hercules-login-1.hpc.msstate.edu :: Task fcst_mem010_seg0, jobid=2678446, in state DEAD (FAILED), ran for 137.0 seconds, exit status=1, try=2 (of 2)

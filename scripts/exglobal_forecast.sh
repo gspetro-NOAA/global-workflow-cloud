@@ -149,6 +149,8 @@ else
   export OMP_NUM_THREADS=${UFS_THREADS:-1}
 fi
 
+module load slurm
+
 ${NCP} "${EXECgfs}/${FCSTEXEC}" "${DATA}/"
 ${APRUN_UFS} "${DATA}/${FCSTEXEC}" 1>&1 2>&2
 export ERR=$?

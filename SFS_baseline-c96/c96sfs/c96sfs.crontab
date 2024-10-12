@@ -1,0 +1,5 @@
+
+#################### c96sfs ####################
+MAILTO=""
+*/5 * * * * /apps/contrib/rocoto/1.3.7/bin/rocotorun -d /work2/noaa/da/weihuang/run/EXPDIR/c96sfs/c96sfs.db -w /work2/noaa/da/weihuang/run/EXPDIR/c96sfs/c96sfs.xml
+#################################################################
