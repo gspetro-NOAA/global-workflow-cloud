@@ -316,7 +316,7 @@ if [[ "${skip_mom6}" == "false" ]]; then
       DT_THERM_MOM6='3600'
       FRUNOFF=""
       CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
-      MOM6_RESTART_SETTING='r'
+      MOM6_RESTART_SETTING='n'
       MOM6_RIVER_RUNOFF='False'
       if [[ ${RUN} == "gfs" || "${RUN}" == "gefs" ]]; then
         MOM6_DIAG_MISVAL="-1e34"
@@ -337,7 +337,7 @@ if [[ "${skip_mom6}" == "false" ]]; then
       DT_THERM_MOM6='3600'
       FRUNOFF="runoff.daitren.clim.1deg.nc"
       CHLCLIM="seawifs_1998-2006_smoothed_2X.nc"
-      MOM6_RESTART_SETTING='r'
+      MOM6_RESTART_SETTING='n'
       MOM6_RIVER_RUNOFF='False'
       eps_imesh="2.5e-1"
       TOPOEDITS="ufs.topo_edits_011818.nc"
@@ -382,7 +382,7 @@ if [[ "${skip_mom6}" == "false" ]]; then
       FRUNOFF="runoff.daitren.clim.${NX_GLB}x${NY_GLB}.v20180328.nc"
       CHLCLIM="seawifs-clim-1997-2010.${NX_GLB}x${NY_GLB}.v20180328.nc"
       MOM6_RIVER_RUNOFF='True'
-      MOM6_RESTART_SETTING="r"
+      MOM6_RESTART_SETTING="n"
       eps_imesh="1.0e-1"
       if [[ ${RUN} == "gfs" || "${RUN}" == "gefs" ]]; then
         MOM6_DIAG_COORD_DEF_Z_FILE="interpolate_zgrid_40L.nc"

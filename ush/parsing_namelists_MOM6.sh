@@ -6,6 +6,7 @@ MOM6_namelists(){
 
 # MOM6 namelists generation
 
+MOM6_RESTART_SETTING=n
 # ================================================================
 # input.nml
 # ---------
