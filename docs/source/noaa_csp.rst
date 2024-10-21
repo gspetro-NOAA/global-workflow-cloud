@@ -4,7 +4,8 @@
 Configuring NOAA Cloud Service Providers
 ########################################
 
-The NOAA Cloud Service Providers (CSP) support the forecast-only
+The NOAA Cloud Service Providers (CSP) support the forecast-only,
+coupled, and gefs
 configurations for the global workflow. Once a suitable CSP instance
 and cluster is defined/created, the global workflow may be executed as
 on the other platforms discussed in the previous sections. In order
@@ -25,9 +26,9 @@ resolution.
      - **Partition**
      - **File System**
    * - Amazon Web Services Parallel Works
-     - C48
-     - ``ATM``
-     - ``c5.9xlarge (36 vCPUs, 72 GB Memory, amd64)``
+     - C48, C96, C192, C384
+     - ``ATM``, ``GEFS``
+     - ``c5.18xlarge (72 vCPUs, 144 GB Memory, amd64)``
      - ``compute``
      - ``/lustre``
 
