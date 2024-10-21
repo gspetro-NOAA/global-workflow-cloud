@@ -30,7 +30,19 @@ resolution.
      - ``ATM``, ``GEFS``
      - ``c5.18xlarge (72 vCPUs, 144 GB Memory, amd64)``
      - ``compute``
-     - ``/lustre``
+     - ``/lustre``, ``/bucket``
+   * - Azure Parallel Works
+     - C48, C96, C192, C384
+     - ``ATM``, ``GEFS``
+     - ``Standard_F48s_v2 (48 vCPUs, 96 GB Memory, amd64)``
+     - ``compute``
+     - ``/lustre``, ``/bucket``
+   * - GCP Parallel Works
+     - C48, C96, C192, C384
+     - ``ATM``, ``GEFS``
+     - ``c3d-standard-60-lssd (60 vCPUs, 240 GB Memory, amd64)``
+     - ``compute``
+     - ``/lustre``, ``/bucket``
 
 Instructions regarding configuring the respective CSP instance and
 cluster follows.
@@ -41,14 +53,16 @@ Login to the NOAA CSP
 
 Log in to the `NOAA CSP <http://noaa.parallel.works/login>`_ and into
 the resources configuration. The user should arrive at the following
-screen.
+screen. Click the "blue" box pointed by the red arrow to login.
+
+.. image:: _static/noaacsp_login_0.jpg
 
 Note that the ``Username or email`` query is case-sensitive. The user
 will then be prompted for their respective RSA token key using the
 same application use for the other RDHPCS machines (i.e., Hera, Jet,
 etc.,).
 
-.. image:: _static/noaacsp_login.png
+.. image:: _static/noaacsp_login.jpg
 
 *******************************
 Configure the NOAA CSP Instance
