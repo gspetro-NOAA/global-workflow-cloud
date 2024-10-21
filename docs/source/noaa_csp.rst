@@ -57,10 +57,10 @@ screen. Click the "blue" box pointed by the red arrow to login.
 
 .. image:: _static/noaacsp_login_1.png
 
-Note that the ``Username or email`` query is case-sensitive. The user
-will then be prompted for their respective RSA token key using the
-same application use for the other RDHPCS machines (i.e., Hera, Jet,
-etc.,).
+Fill the ``Username / Email`` box with your own usernam or NOAA-email.
+Note that the ``Username or email`` query is case-sensitive.
+And then the respective RSA token key using the same application used
+for the other RDHPCS machines (i.e., Hera, Jet, etc.,).
 
 .. image:: _static/noaacsp_login_2.png
 
@@ -68,41 +68,41 @@ etc.,).
 Configure the NOAA CSP Instance
 *******************************
 
-Once logged into the NOAA CSP, navigate to the :red-text:`RESOURCES` section
-and click the ``+ Add Resource`` button in the upper-right corner as
-illustrated below.
+Once logged into the NOAA CSP, navigate to the :red-text:`Marketplace` section
+at the left panel as pointed by the red arrow, and click.
+Scrow down to selecet "AWS EPIC Wei CentOS" as in red-circle.
+Note, current global-workflow still using CentOS built spack-stack.
+It will be updated to Rocky 8 soon.
 
 .. image:: _static/noaacsp_instance_1.png
    
-Next, the mandatory attributes for the respective instance must be
-defined as shown in the illustration below.
+Next, click "Forklatest" as shown in the red-circle.
 
 .. image:: _static/noaacsp_instance_2.png
-
-The annotated attributes and their respective descriptions are as
-follows.
-
-1. A unique name for the instance. Best practices suggest one that is
-   clear, concise, and relevant to the application.
-2. A short description of the instance, i.e., ``This instance supports
-   this <task name> task.``
-3. Tag(s) describing and identifying the respective instance. These
-   allow for improved bookkeeping, especially when a user has multiple
-   or concurrent instance types.
-
-Next, the cluster is defined as shown in the following illustration.
+   
+A unique name (box pointer by the red-arrow) for the instance.
+Best practices suggest one that is clear, concise, and relevant to the application.
+Click :red-text:`Fork` (in the red-circle) to fork an instance.
 
 .. image:: _static/noaacsp_instance_3.png
 
-The NOAA Parallel Works initiative currently provides 2 CSPs for the
-global-workflow; **AWS** (Amazon Web Services) and **Azure**
-(Microsoft Azure). Existing clusters may also be modified. However
-this is neither recommended or supported.
+Now, an instance is forked, and it is time to configure the cluster.
 
-Finally, when satisfied with the CSP instance configure, click ``Add
-Resource`` as illustrated below.
+1. Select a "Recource Account", usually it is: NOAA AWS Commercial Vault.
+2. Select a "Group". Which will be something like: ca-epic, ca-sfs-emc, etc.
+3. Copy and paste you Public key (.ssh/id_rsa.pub, .ssh/id_dsa.pu from your laptop).
+4. Modify "User Bootstrap". If you are not use "ca-epic" group, please UNCOMMENT line 2.
+6. Keep "health Check" as it is.
+
+Click "Save Changes" at top-right as shown in read circle.
 
 .. image:: _static/noaacsp_instance_4.png
+
+The NOAA ParallelWorks currently provides 3 CSPs:
+**AWS** (Amazon Web Services), **Azure** (Microsoft Azure),
+and **GCP** (Google Cloud Platform).
+Existing clusters may also be modified.
+Better practice is to fork from Marketplace with something similar to your requests.
 
 ******************************
 Configure the NOAA CSP Cluster
