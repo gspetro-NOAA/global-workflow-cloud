@@ -55,14 +55,14 @@ Log in to the `NOAA CSP <http://noaa.parallel.works/login>`_ and into
 the resources configuration. The user should arrive at the following
 screen. Click the "blue" box pointed by the red arrow to login.
 
-.. image:: _static/noaacsp_login_0.jpg
+.. image:: _static/noaacsp_login_1.png
 
 Note that the ``Username or email`` query is case-sensitive. The user
 will then be prompted for their respective RSA token key using the
 same application use for the other RDHPCS machines (i.e., Hera, Jet,
 etc.,).
 
-.. image:: _static/noaacsp_login.jpg
+.. image:: _static/noaacsp_login_2.png
 
 *******************************
 Configure the NOAA CSP Instance
