@@ -105,63 +105,70 @@ Existing clusters may also be modified.
 Better practice is to fork from Marketplace with something similar to your requests.
 
 ******************************
-Configure the NOAA CSP Cluster
+Add CSP Lustre Filesystem
 ******************************
 
-Navigate to the tab and locate the CSP instance configured in the
-previous section and click on the link, `globalworkflowdemo` for this
-example.
+To run global-workflow on CSPs, we need to attached lustre filesystem as run directory.
+Figure, we need to add/define our lustre filesystem, to do so,
+navigate to the middle of noaa.parallel.works web-site left panel and select "Lutre" 
+as pointed by red-arrow, and then click "AddStorage" at top-right as in the red-circle.
 
-.. image:: _static/noaacsp_cluster_1.png
+.. image:: _static/noaacsp_lustre_1.png
 
-The respective CSP cluster maybe then be configured. The mandatory
-configuration attributes are as follows.
+Select `FSx` for AWS FSx lustre filesystem as in red-circle.
+Define the lustre with:
 
-- Availability zone;
-- Disk size and storage type(s);
-- Available compute and resource partitions.
+1. Clear and meaningfull `Resource name` as shown in red-arrow 1
+2. Short sentice for `Decription` as shown in red-arrow 2
+3. Choose **linux** for `Tag` as shown in red-arrow 3
 
-The following image describes the general settings for the respective
-cluster. These attributes are specific to the user and the respective
-user's group allocation. The right-most panel provides a breakdown of
-the costs related to the requested compute and storage
-resources. While there is a space to place an SSH key here, RDHPCS
-recommends adding any SSH keys under the respective user's
-``Account➡Authentication instead``. This will allow you to connect
-from another machine instead of using the Parallel Works web terminal.
+Click "Add Storage" as in red-box at top-right corner.
+This will create a "lustre" filesystem template.
 
-.. image:: _static/noaacsp_cluster_2.png
+.. image:: _static/noaacsp_luster_2.png
 	   
-The following image describes the controller settings for a cluster
-created for a C48 atmosphere forecast-only configuration. Here the
-user must define the instance type (see the table above), the number
-of image disks and the image disk sizes.
+After create the template, we need to fill information for this lustre filesystem.
+To do so go to noaa.parallel.works web-site, click "Lustre" at left-panel as
+indicated by red-arrow 1. Then select the filesystem as define above by `Resource name`
+as shown in red-box. Here user can delete this resource if not needed by
+click the trash-can as pointed by red-arrow 2.
 
-.. image:: _static/noaacsp_cluster_3.png
+.. image:: _static/noaacsp_luster_3.png
 
-Next the partitions for the cluster may be defined. A partition
-configuration for the aforementioned C48 atmosphere forecast-only
-application is illustrated in the figure below. Note that the instance
-type beneath ``Controller Settings`` and ``Partitions`` must be
-identical. Other configurations are not supported by the
-global-workflow team. Once the partitions are configured, click the
-``+ Add Partition`` button in the upper-right corner.
+By click the filesystme in the red-box of the above image,
+users led to the lustre definition page.
 
-.. image:: _static/noaacsp_cluster_4.png
+1. Choose a size in the `Storage Capacity(GB)` box as pointed by red-arrow 1.
+   There is a minium of 1200 by AWS. For C48 ATM/GEFS case this will be enough.
+   For SFS-C96 case, or C768 ATM/S2S case it should probably increase to 12000.
+2. For `File System Deployment`, choose "SCRATCH_2" for now as by red-arrow 2.
+   Do not use SCRATCH_1, as it is used for test by PW.
+3. Choose **NONE** for `File System Compression` as pointed by red-arrow 3.
+   Only choose LZ4 if you understand what it means.
+4. Leave "S2 Import Path" and "S3 Export Path" black for now.
+5. Click **Save Changes** in red-circle to save the definition/(changes made).
+
+.. image:: _static/noaacsp_luster_4.png
 
 For the storage do be allocated for the global-workflow application it
 is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
 has been configured, click the ``+ Add Attached Storage`` button in
 the upper-right corner. This is illustrated in the following image.
 
-.. image:: _static/noaacsp_cluster_5.png
+.. image:: _static/noaacsp_luster_5.png
 
-Finally, the following illustrates a JSON version of the cluster
-configuration created from the steps above. When opening issues
-related to the NOAA CSP global-workflow applications please include
-the JSON content.
+******************************
+Attach CSP Lustre Filesystem
+******************************
 
-.. image:: _static/noaacsp_cluster_6.png
+Now we need to attach the defined filesystem to our cluster.
+Go back to our noaa.parallel.works web-site, and click `Cluster`
+as shown in figuer below, then select the cluster "AWS EPIC Wei CentOS example"
+(it should be your own cluster) cluster as show in red-box.
+Note, one can remoce/delete this cluster if no longer needed by
+click the trash-can shown in the red-circle at right.
+
+.. image:: _static/noaacsp_filesystem_1.png
 
 **************************
 Using the NOAA CSP Cluster
