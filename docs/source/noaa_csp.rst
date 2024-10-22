@@ -170,52 +170,124 @@ click the trash-can shown in the red-circle at right.
 
 .. image:: _static/noaacsp_filesystem_1.png
 
+When get into the cluster page, click the `Definition` in the top menu as
+in the red-box. When finished, remeber to clicke `Save Changes` to save
+the changes.
+
+.. image:: _static/noaacsp_filesystem_2.png
+
+Scrow down to the bottom, and click `Add Attached Filesystems` as in the red-circle.
+
+.. image:: _static/noaacsp_filesystem_3.png
+
+After click `Add Attached Filesystems`, one `Attached Filesystems settings` will appear.
+
+1. In the `Storage` box, select the lustre filesystem defined above, as in red-arrow 1.
+2. In the `Mount Point` box, name it `/lustre` (the common and default choice) as pointed by red-arrow 2.
+   If you choose a different name, make sure to make the Global-Workflow setup step
+   use the name chosen here.
+
+If you have a `S3 bucket`, one can attached as:
+
+3. In the `Storage` box, select the bucket you want to use, as in red-arrow 3.
+4. In the `Mount Point` box, name it `/bucket` (the common and default choice) as pointed by red-arrow 4.
+
+.. image:: _static/noaacsp_filesystem_4.png
+
+Alway remember to click `Save Changes` after your make any changes to the cluster.
+
 **************************
 Using the NOAA CSP Cluster
 **************************
 
-To activate the cluster, click the button circled in
-:red-text:red. The cluster status is denoted by the color-coded button
-on the right. The amount of time required to start the cluster is
-variable and not immediate and may take several minutes for the
-cluster to become.
+To activate the cluster, click the `cluster` at right panel of the noaa.parallel.works web-site,
+as point by the red-arrow. Then click the `Sessions` button in red-square, and than click the
+button in red-circle. The cluster status is denoted by the color-coded button
+on the right: red, stopped; orange, requested; green, active. The amount of time required to start
+the cluster is variable and not immediate and may take several minutes for the cluster to become.
 
 .. image:: _static/noaacsp_using_1.png
 
-For instances where a NOAA CSP cluster does not initialize, useful
-output can be found beneath the ``Logs`` section beneath the
-``Provision`` tab as illustrated below. Once again, when opening
-issues related to the NOAA CSP cluster initialization please include
-this information.
+when the cluster is activate, user will see:
+1. Green dot means the cluster is active, pointed by red-arrow 1.
+2. Green dot means the cluster is active, pointed by red-arrow 2.
+3. Green button means the cluster is active, pointed by red-arrow 3.
+4. Click the blue-square with arrow inside pointed by red-arrow 4 will copy the cluster's IP into clipboard,
+   which you can open a laptop xterm/window, and do `ssh username@the-ip-address` in the xterm window will connect you
+   to the AWS cluster, and you can do you work there.
+4. Which is the `username@the-ip-address`, or your AWS PW cluster. Click it, will have a PW web terminal appear in the
+   bottom of the web-site, which you can work on this terminal to use your AWS cluster.
+Please note, as soon as the cluster is activated, AWS/PW starts charging you for use the cluster.
+As this cluster is exclusive for yourself, AWS keep charging you as long as the cluster is active.
+For running global-workflow, one need to keep the cluster active if there is any rocoto jobs running,
+as rocoto is using `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
 
 .. image:: _static/noaacsp_using_2.png
+
+After finish your work on the AWS cluster, one should terminate/stop the cluster, unless you have reasons to keep it active.
+To stop/terminate the cluster, go to the cluster session, and click the `green` button. A window pop up, and click the
+red `Turn Off` button to switch off the cluster. 
+
+.. image:: _static/noaacsp_using_3.png
 
 ***************************
 Running the Global Workflow
 ***************************
 
-The global-workflow configuration currently requires that all initial
-conditions, observations, and fixed-files, are staged in the
-appropriate paths prior to running the global-workflow. As suggested
-above, it is strongly recommended the the user configure their
-respective experiments to use the ``/lustre`` file system for the
-``EXPDIR`` and ``ROTDIR`` contents. The ``/contrib`` file system is
-suitable for compiling and linking the workflow components required of
-the global-workflow.
-
-The software stack supporting the ``develop`` branch of the
-global-workflow is provided for the user and is located beneath
-``/contrib/emc_static/spack-stack``. The modules required for the
-global-workflow execution may be loaded as follows.
-
+Assume you have a AWS cluster running, after login to the cluster through `ssh` from your laptop terminal,
+or access the cluster from your web terminal, one can start clone, compile, and run global-workflow.
+1. clone global-workflow( assume you have setup access to githup):
 .. code-block:: bash
+   cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
+   git clone --recursive git@github.com:NOAA-EMC/global-workflow.git
+  #or the develop form at EPIC:
+   git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git
+2. compile global-workflow:
+.. code-block:: bash
+   cd /contrib/$USER/global-workflow
+   cd sorc
+   build_all.sh   # or similar command to compile for gefs, or others.
+   link_workflow.sh  # after build_all.sh finished successfully
 
-   user@host:$ module unuse /opt/cray/craype/default/modulefiles
-   user@host:$ module unuse /opt/cray/modulefiles
-   user@host:$ module use /contrib/emc_static/spack-stack/miniconda/modulefiles/miniconda
-   user@host:$ module load py39_4.12.0
-   user@host:$ module load rocoto/1.3.3
+  #As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.
+   #!/bin/bash
+   #SBATCH --job-name=compile
+   #SBATCH --account=$USER
+   #SBATCH --qos=batch
+   #SBATCH --partition=compute
+   #SBATCH -t 04:15:00
+   #SBATCH --nodes=1
+   #SBATCH -o compile.%J.log
+   #SBATCH --exclusive
 
+   set -x
+
+   gwhome=/contrib/Wei.Huang/src/global-workflow-cloud
+   cd ${gwhome}/sorc
+   source ${gwhome}/workflow/gw_setup.sh
+
+  #build_all.sh
+  build_all.sh -w
+  #build_all.sh -f
+  #build_all.sh -wf
+
+  link_workflow.sh
+
+  #Save the above lines in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"
+
+3. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached):
+.. code-block:: bash
+   cd /contrib/$USER/global-workflow
+   
+   HPC_ACCOUNT=${USER} pslot=c48atm RUNTESTS=/lustre/$USER/run \
+        ./workflow/create_experiment.py \
+        --yaml ci/cases/pr/C48_ATM.yaml
+
+   cd /lustre/$USER/run/EXPDIR/c48atm
+   crontab c48atm
+
+EPIC has copied the common used data to AWS, and the current code has setup to use those data.
+If user wants to run own case, user needs to make changes to the IC path and others to make it work.
 The execution of the global-workflow should now follow the same steps
 as those for the RDHPCS on-premise hosts.
 
