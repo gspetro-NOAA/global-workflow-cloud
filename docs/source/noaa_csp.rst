@@ -125,7 +125,7 @@ Define the lustre with:
 Click "Add Storage" as in red-box at top-right corner.
 This will create a "lustre" filesystem template.
 
-.. image:: _static/noaacsp_luster_2.png
+.. image:: _static/noaacsp_lustre_2.png
 	   
 After create the template, we need to fill information for this lustre filesystem.
 To do so go to noaa.parallel.works web-site, click "Lustre" at left-panel as
@@ -133,7 +133,7 @@ indicated by red-arrow 1. Then select the filesystem as define above by `Resourc
 as shown in red-box. Here user can delete this resource if not needed by
 click the trash-can as pointed by red-arrow 2.
 
-.. image:: _static/noaacsp_luster_3.png
+.. image:: _static/noaacsp_lustre_3.png
 
 By click the filesystme in the red-box of the above image,
 users led to the lustre definition page.
@@ -148,14 +148,14 @@ users led to the lustre definition page.
 4. Leave "S2 Import Path" and "S3 Export Path" black for now.
 5. Click **Save Changes** in red-circle to save the definition/(changes made).
 
-.. image:: _static/noaacsp_luster_4.png
+.. image:: _static/noaacsp_lustre_4.png
 
 For the storage do be allocated for the global-workflow application it
 is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
 has been configured, click the ``+ Add Attached Storage`` button in
 the upper-right corner. This is illustrated in the following image.
 
-.. image:: _static/noaacsp_luster_5.png
+.. image:: _static/noaacsp_lustre_5.png
 
 ******************************
 Attach CSP Lustre Filesystem
