@@ -14,7 +14,7 @@ arguments:
   comroot: {{ 'RUNTESTS' | getenv }}/COMROOT
   expdir: {{ 'RUNTESTS' | getenv }}/EXPDIR
   idate: 1994050100
-  edate: 1994051212
+  edate: 1994053100
   yaml: {{ HOMEgfs }}/SFS_baseline-c96/SFS_options.yaml
 
 skip_ci_on_hosts:

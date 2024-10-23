@@ -140,7 +140,12 @@ FV3_predet(){
     mapfile -t FV3_RESTART_FH < <(seq "${restart_interval}" "${restart_interval}" "${FHMAX}")
     # If the last forecast hour is not in the array, add it
     local nrestarts=${#FV3_RESTART_FH[@]}
-    if (( FV3_RESTART_FH[nrestarts-1] != FHMAX )); then
+    echo "nrestarts = $nrestarts"
+    if (( nrestarts > 0 )); then
+      if (( FV3_RESTART_FH[nrestarts-1] != FHMAX )); then
+        FV3_RESTART_FH+=("${FHMAX}")
+      fi
+    else
       FV3_RESTART_FH+=("${FHMAX}")
     fi
   fi
