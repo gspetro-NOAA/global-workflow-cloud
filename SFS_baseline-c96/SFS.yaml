@@ -9,12 +9,11 @@ arguments:
   resensatmos: 96
   resdetocean: 1.0
   nens: 10
-  gfs_cyc: 1
   start: cold
   comroot: {{ 'RUNTESTS' | getenv }}/COMROOT
   expdir: {{ 'RUNTESTS' | getenv }}/EXPDIR
   idate: 1994050100
-  edate: 1994060100
+  edate: 1994050600
   yaml: {{ HOMEgfs }}/SFS_baseline-c96/SFS_options.yaml
 
 skip_ci_on_hosts:
