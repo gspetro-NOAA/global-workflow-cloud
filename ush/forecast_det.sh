@@ -5,6 +5,9 @@
 UFS_det(){
   echo "SUB ${FUNCNAME[0]}: Run type determination for UFS"
 
+  echo "COMIN_ATMOS_RESTART_PREV: $COMIN_ATMOS_RESTART_PREV"
+  echo "model_start_date_current_cycle: $model_start_date_current_cycle"
+
   # Determine if the current cycle is a warm start (based on the availability of restarts)
   if [[ -f "${COMIN_ATMOS_RESTART_PREV}/${model_start_date_current_cycle:0:8}.${model_start_date_current_cycle:8:2}0000.coupler.res" ]]; then
     warm_start=".true."
@@ -31,7 +34,7 @@ UFS_det(){
   fi
 
   # Lets assume this is was not run before and hence this is not a RERUN
-  RERUN="NO"
+  RERUN="YES"
 
   # RERUN is only available for RUN=gfs|gefs It is not available for RUN=gdas|enkfgdas|enkfgfs
   if [[ "${RUN}" =~ "gdas" ]] || [[ "${RUN}" == "enkfgfs" ]]; then

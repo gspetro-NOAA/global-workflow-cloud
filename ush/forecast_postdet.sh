@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+ RERUN=YES
+ RERUN_DATE=1994053100
+
 # Disable variable not used warnings
 # shellcheck disable=SC2034
 FV3_postdet() {
@@ -115,6 +118,7 @@ FV3_postdet() {
 
       local restart_fhr
       restart_fhr=$(nhour "${RERUN_DATE}" "${current_cycle}")
+      IAU_OFFSET=${IAU_OFFSET:-0}
       IAU_FHROT=$((IAU_OFFSET + restart_fhr))
       if [[ "${DOIAU}" == "YES" ]]; then
         IAUFHRS=-1

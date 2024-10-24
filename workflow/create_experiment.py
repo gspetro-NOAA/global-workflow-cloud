@@ -94,15 +94,32 @@ if __name__ == '__main__':
         setup_expt_args.append("--overwrite")
 
     logger.info(f"Call: setup_expt.main()")
+
     logger.debug(f"setup_expt.py {' '.join(setup_expt_args)}")
+
     setup_expt.main(setup_expt_args)
 
     # Create a list of arguments to setup_xml.py
     experiment_dir = Path.absolute(Path.joinpath(
         Path(testconf.arguments.expdir), Path(testconf.arguments.pslot)))
 
-    setup_xml_args = [str(experiment_dir)]
+    setup_xml_args = ['--expdir', str(experiment_dir)]
+
+    for n in range(len(setup_expt_args)):
+        key = setup_expt_args[n]
+        if (key == '--maxtries'):
+            setup_xml_args.append(key)
+            setup_xml_args.append(setup_expt_args[n+1])
+        elif (key == '--cyclethrottle'):
+            setup_xml_args.append(key)
+            setup_xml_args.append(setup_expt_args[n+1])
+        elif (key =='--taskthrottle'):
+            setup_xml_args.append(key)
+            setup_xml_args.append(setup_expt_args[n+1])
+
+   #print('setup_xml_args:', setup_xml_args)
 
     logger.info(f"Call: setup_xml.main()")
     logger.debug(f"setup_xml.py {' '.join(setup_xml_args)}")
+   #print('setup_xml_args:', setup_xml_args)
     setup_xml.main(setup_xml_args)

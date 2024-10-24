@@ -1,5 +1,8 @@
 #! /usr/bin/env bash
 
+#Temporary test variables
+print_memory_usage=${print_memory_usage:-".false."}
+
 # parsing namelist of FV3, diag_table, etc.
 
 # Disable variable not used warnings

@@ -53,6 +53,17 @@ class Stage(Task):
         # Add the os.path.exists function to the dict for yaml parsing
         stage_dict['path_exists'] = os.path.exists
 
+        if 'DO_RESTART' in stage_dict.keys():
+            print("stage_dict['DO_RESTART'] = ", stage_dict['DO_RESTART'])
+            if stage_dict['DO_RESTART']:
+                need_stage_ic = False
+            else:
+                need_stage_ic = True
+        else:
+            need_stage_ic = True
+
+        print('in execute_stage: need_stage_ic: ', need_stage_ic)
+
         # Add the glob.glob function for capturing filenames
         stage_dict['glob'] = glob.glob
 
@@ -60,5 +71,6 @@ class Stage(Task):
         stage_set = parse_j2yaml(self.task_config.STAGE_IC_YAML_TMPL, stage_dict, allow_missing=False)
 
         # Copy files to ROTDIR
-        for key in stage_set.keys():
-            FileHandler(stage_set[key]).sync()
+        if need_stage_ic:
+            for key in stage_set.keys():
+                FileHandler(stage_set[key]).sync()

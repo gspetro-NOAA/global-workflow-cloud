@@ -39,7 +39,7 @@ if [[ "${cpl}" = ".true." ]]; then
   local coupling_interval_slow_sec="${CPL_SLOW}"
 fi
 
-local WRITE_ENDOFRUN_RESTART=.false.
+local WRITE_ENDOFRUN_RESTART=.true.
 
 if [[ "${cplflx}" = ".true." ]]; then
 

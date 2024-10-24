@@ -25,9 +25,6 @@ def input_args(*argv):
                             formatter_class=ArgumentDefaultsHelpFormatter)
 
     # Common arguments across all modes
-    parser.add_argument('expdir', help='full path to experiment directory containing config files',
-                        type=str, default=os.environ['PWD'])
-
     parser.add_argument('--maxtries', help='maximum number of retries', type=int,
                         default=2, required=False)
     parser.add_argument('--cyclethrottle', help='maximum number of concurrent cycles', type=int,
@@ -36,8 +33,10 @@ def input_args(*argv):
                         default=25, required=False)
     parser.add_argument('--verbosity', help='verbosity level of Rocoto', type=int,
                         default=10, required=False)
+    parser.add_argument('--expdir', help='full path to experiment directory containing config files',
+                        type=str, default=os.environ['PWD'])
 
-    return parser.parse_args(argv[0][0] if len(argv[0]) else None)
+    return parser.parse_args(list(*argv[0]) if len(argv[0]) else None)
 
 
 def check_expdir(cmd_expdir, cfg_expdir):
@@ -51,11 +50,18 @@ def check_expdir(cmd_expdir, cfg_expdir):
 
 def main(*argv):
 
+   #print('in setup_xml.py argv = ', argv)
+
     user_inputs = input_args(argv)
+
+   #print('in setup_xml.py user_inputs = ', user_inputs)
+
     rocoto_param_dict = {'maxtries': user_inputs.maxtries,
                          'cyclethrottle': user_inputs.cyclethrottle,
                          'taskthrottle': user_inputs.taskthrottle,
                          'verbosity': user_inputs.verbosity}
+
+   #print('in setup_xml.py rocoto_param_dict = ', rocoto_param_dict)
 
     cfg = Configuration(user_inputs.expdir)
 

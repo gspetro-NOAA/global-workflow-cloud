@@ -148,7 +148,7 @@ class Tasks:
             local_config['FHOUT_GFS'] = config['FHOUT_ICE_GFS']
             local_config['FHOUT'] = config['FHOUT_ICE']
 
-        fhmin = local_config['FHMIN']
+        fhmin = local_config['FHMIN_GFS']
 
         # Get a list of all forecast hours
         fhrs = []
@@ -161,7 +161,18 @@ class Tasks:
             fhout = local_config['FHOUT_GFS']
             fhmax_hf = local_config['FHMAX_HF_GFS']
             fhout_hf = local_config['FHOUT_HF_GFS']
+
+            print('fhmin = ', fhmin)
+            print('fhmax = ', fhmax)
+            print('fhout = ', fhout)
+            print('fhmax_hf = ', fhmax_hf)
+            print('fhout_hf = ', fhout_hf)
+
+            if (fhmax_hf < 1):
+                fhmax_hf = fhmax
+
             fhrs_hf = range(fhmin, fhmax_hf + fhout_hf, fhout_hf)
+            print('fhrs_hf = ', fhrs_hf)
             fhrs = list(fhrs_hf) + list(range(fhrs_hf[-1] + fhout, fhmax + fhout, fhout))
 
         return fhrs

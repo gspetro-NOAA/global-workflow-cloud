@@ -100,21 +100,35 @@ def edit_baseconfig(host, inputs, yaml_dict):
     extend_dict = get_template_dict(host.info)
     tmpl_dict = dict(tmpl_dict, **extend_dict)
 
+    is_warm_start = ".false."
+    is_restart = ".false."
     if inputs.start in ["warm"]:
         is_warm_start = ".true."
     elif inputs.start in ["cold"]:
         is_warm_start = ".false."
+    elif inputs.start in ["restart"]:
+        is_restart = ".true."
+
+   #print('inputs: ', inputs)
+
+    if hasattr(inputs, 'rdate'):
+        inputs.idate = inputs.rdate
 
     extend_dict = dict()
     extend_dict = {
         "@PSLOT@": inputs.pslot,
+        "@MAXTRIES@": f"{int(inputs.maxtries):03d}",
+        "@CYCLETHROTTLE@": f"{int(inputs.cyclethrottle):03d}",
+        "@TASKTHROTTLE@": f"{int(inputs.taskthrottle):03d}",
         "@SDATE@": datetime_to_YMDH(inputs.idate),
+        "@RDATE@": datetime_to_YMDH(inputs.rdate),
         "@EDATE@": datetime_to_YMDH(inputs.edate),
         "@CASECTL@": f'C{inputs.resdetatmos}',
         "@OCNRES@": f"{int(100.*inputs.resdetocean):03d}",
         "@EXPDIR@": inputs.expdir,
         "@COMROOT@": inputs.comroot,
         "@EXP_WARM_START@": is_warm_start,
+        "@EXP_RESTART@": is_restart,
         "@MODE@": inputs.mode,
         "@gfs_cyc@": inputs.gfs_cyc,
         "@APP@": inputs.app,
@@ -199,15 +213,22 @@ def input_args(*argv):
                             type=str, required=False, default=os.getenv('HOME'))
         parser.add_argument('--idate', help='starting date of experiment, initial conditions must exist!',
                             required=True, type=lambda dd: to_datetime(dd))
+        parser.add_argument('--rdate', help='restart date experiment', required=False, type=lambda dd: to_datetime(dd))
         parser.add_argument('--edate', help='end date experiment', required=True, type=lambda dd: to_datetime(dd))
         parser.add_argument('--icsdir', help='full path to user initial condition directory', type=str, required=False, default='')
         parser.add_argument('--overwrite', help='overwrite previously created experiment (if it exists)',
                             action='store_true', required=False)
+        parser.add_argument('--maxtries', help='maximum number of retries', type=int,
+                            default=2, required=False)
+        parser.add_argument('--cyclethrottle', help='maximum number of concurrent cycles', type=int,
+                            default=3, required=False)
+        parser.add_argument('--taskthrottle', help='maximum number of concurrent tasks', type=int,
+                            default=25, required=False)
         return parser
 
     def _gfs_args(parser):
-        parser.add_argument('--start', help='restart mode: warm or cold', type=str,
-                            choices=['warm', 'cold'], required=False, default='cold')
+        parser.add_argument('--start', help='restart mode: warm, cold, or restart', type=str,
+                            choices=['warm', 'cold', 'restart'], required=False, default='cold')
         parser.add_argument('--run', help='RUN to start the experiment',
                             type=str, required=False, default='gdas')
         # --configdir is hidden from help
@@ -238,8 +259,8 @@ def input_args(*argv):
         return parser
 
     def _gefs_args(parser):
-        parser.add_argument('--start', help='restart mode: warm or cold', type=str,
-                            choices=['warm', 'cold'], required=False, default='cold')
+        parser.add_argument('--start', help='restart mode: warm, cold, or restart', type=str,
+                            choices=['warm', 'cold', 'restart'], required=False, default='cold')
         parser.add_argument('--configdir', help=SUPPRESS, type=str, required=False,
                             default=os.path.join(_top, 'parm/config/gefs'))
         parser.add_argument('--yaml', help='Defaults to substitute from', type=str, required=False,
@@ -346,6 +367,8 @@ def main(*argv):
 
     user_inputs = input_args(*argv)
     host = Host()
+
+   #print('user_inputs = ', user_inputs)
 
     validate_user_request(host, user_inputs)
 

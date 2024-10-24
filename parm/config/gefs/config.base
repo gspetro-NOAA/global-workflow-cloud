@@ -237,9 +237,13 @@ else
     export OFFSET_START_HOUR=0
 fi
 
+export DO_RESTART=@DO_RESTART@
+if [[ "${DO_RESTART:-NO}" == "YES" ]]; then
+    export OFFSET_START_HOUR="@FHMIN_GFS@"
+fi
 
 # GFS output and frequency
-export FHMIN_GFS=0
+export FHMIN_GFS="@FHMIN_GFS@"
 export FHMAX_GFS="@FHMAX_GFS@"
 # Intermediate times to stop forecast when running in segments
 breakpnts="@FCST_BREAKPOINTS@"
@@ -269,8 +273,8 @@ export FHOUT_OCN=${FHOUT_OCN_GFS}
 export FHOUT_ICE=${FHOUT_ICE_GFS}
 
 # GFS restart interval in hours
-export restart_interval_gfs=600
-export restart_interval_enkfgfs=600
+export restart_interval_gfs=1464
+export restart_interval_enkfgfs=1464
 # NOTE: Do not set this to zero.  Instead set it to $FHMAX_GFS
 # TODO: Remove this variable from config.base and reference from config.fcst
 # TODO: rework logic in config.wave and push it to parsing_nameslist_WW3.sh where it is actually used
