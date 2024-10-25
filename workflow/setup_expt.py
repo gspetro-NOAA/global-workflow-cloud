@@ -121,7 +121,6 @@ def edit_baseconfig(host, inputs, yaml_dict):
         "@CYCLETHROTTLE@": f"{int(inputs.cyclethrottle):03d}",
         "@TASKTHROTTLE@": f"{int(inputs.taskthrottle):03d}",
         "@SDATE@": datetime_to_YMDH(inputs.idate),
-        "@RDATE@": datetime_to_YMDH(inputs.rdate),
         "@EDATE@": datetime_to_YMDH(inputs.edate),
         "@CASECTL@": f'C{inputs.resdetatmos}',
         "@OCNRES@": f"{int(100.*inputs.resdetocean):03d}",
@@ -227,7 +226,6 @@ def input_args(*argv):
                             type=str, required=False, default=os.getenv('HOME'))
         parser.add_argument('--idate', help='starting date of experiment, initial conditions must exist!',
                             required=True, type=lambda dd: to_datetime(dd))
-        parser.add_argument('--rdate', help='restart date experiment', required=False, type=lambda dd: to_datetime(dd))
         parser.add_argument('--edate', help='end date experiment', required=False, type=lambda dd: to_datetime(dd))
         parser.add_argument('--interval', help='frequency of forecast (in hours); must be a multiple of 6', type=_validate_interval, required=False, default=6)
         parser.add_argument('--icsdir', help='full path to user initial condition directory', type=str, required=False, default='')
