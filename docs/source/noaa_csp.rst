@@ -248,15 +248,25 @@ or access the cluster from your web terminal, one can start clone, compile, and 
    build_all.sh   # or similar command to compile for gefs, or others.
    link_workflow.sh  # after build_all.sh finished successfully
 
-   #As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.
+As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.
+
+.. code-block:: bash
    #!/bin/bash
+
    #SBATCH --job-name=compile
+
    #SBATCH --account=$USER
+
    #SBATCH --qos=batch
+
    #SBATCH --partition=compute
+
    #SBATCH -t 04:15:00
+
    #SBATCH --nodes=1
+
    #SBATCH -o compile.%J.log
+
    #SBATCH --exclusive
 
    set -x
@@ -266,13 +276,12 @@ or access the cluster from your web terminal, one can start clone, compile, and 
    source ${gwhome}/workflow/gw_setup.sh
 
    #build_all.sh
+
    build_all.sh -w
-   #build_all.sh -f
-   #build_all.sh -wf
 
    link_workflow.sh
 
-   #Save the above lines in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"
+Save the above lines in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"
 
 3. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached):
 .. code-block:: bash
