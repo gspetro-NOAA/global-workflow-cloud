@@ -5,12 +5,10 @@ Configuring NOAA Cloud Service Providers
 ########################################
 
 The NOAA Cloud Service Providers (CSP) support the forecast-only,
-coupled, and gefs
-configurations for the global workflow. Once a suitable CSP instance
-and cluster is defined/created, the global workflow may be executed as
-on the other platforms discussed in the previous sections. In order
-successfully execute the global-workflow, a suitable CSP cluster must
-be created. Currently the global-workflow supports the following
+coupled, and gefs configurations for the global workflow.
+Once a suitable CSP instance and cluster is defined/created,
+the global-workflow may be executed similar to the on-prem machines.
+Currently the global-workflow supports the following
 instance and storage types as a function of CSP and forecast
 resolution.
 
@@ -57,7 +55,7 @@ screen. Click the "blue" box pointed by the red arrow to login.
 
 .. image:: _static/noaacsp_login_1.png
 
-Fill the ``Username / Email`` box with your own usernam or NOAA-email.
+Fill the ``Username / Email`` box with your own username or NOAA-email.
 Note that the ``Username or email`` query is case-sensitive.
 And then the respective RSA token key using the same application used
 for the other RDHPCS machines (i.e., Hera, Jet, etc.,).
@@ -80,7 +78,7 @@ Next, click "Forklatest" as shown in the red-circle.
 
 .. image:: _static/noaacsp_instance_2.png
    
-A unique name (box pointer by the red-arrow) for the instance.
+Please provide a unique name (box pointer by the red-arrow) for the instance.
 Best practices suggest one that is clear, concise, and relevant to the application.
 Click :red-text:`Fork` (in the red-circle) to fork an instance.
 
@@ -92,7 +90,7 @@ Now, an instance is forked, and it is time to configure the cluster.
 2. Select a "Group". Which will be something like: ca-epic, ca-sfs-emc, etc.
 3. Copy and paste you Public key (.ssh/id_rsa.pub, .ssh/id_dsa.pu from your laptop).
 4. Modify "User Bootstrap". If you are not use "ca-epic" group, please UNCOMMENT line 2.
-6. Keep "health Check" as it is.
+5. Keep "health Check" as it is.
 
 Click "Save Changes" at top-right as shown in read circle.
 
@@ -128,7 +126,7 @@ This will create a "lustre" filesystem template.
 .. image:: _static/noaacsp_lustre_2.png
 	   
 After create the template, we need to fill information for this lustre filesystem.
-To do so go to noaa.parallel.works web-site, click "Lustre" at left-panel as
+To do so, go to noaa.parallel.works web-site, click "Lustre" at left-panel as
 indicated by red-arrow 1. Then select the filesystem as define above by `Resource name`
 as shown in red-box. Here user can delete this resource if not needed by
 click the trash-can as pointed by red-arrow 2.
@@ -150,8 +148,8 @@ users led to the lustre definition page.
 
 .. image:: _static/noaacsp_lustre_4.png
 
-For the storage do be allocated for the global-workflow application it
-is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
+For the storage to be allocated for the global-workflow application,
+it is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
 has been configured, click the ``+ Add Attached Storage`` button in
 the upper-right corner. This is illustrated in the following image.
 
@@ -165,7 +163,7 @@ Now we need to attach the defined filesystem to our cluster.
 Go back to our noaa.parallel.works web-site, and click `Cluster`
 as shown in figuer below, then select the cluster "AWS EPIC Wei CentOS example"
 (it should be your own cluster) cluster as show in red-box.
-Note, one can remoce/delete this cluster if no longer needed by
+Note, one can remove/delete this cluster if no longer needed by
 click the trash-can shown in the red-circle at right.
 
 .. image:: _static/noaacsp_filesystem_1.png
@@ -194,7 +192,7 @@ If you have a `S3 bucket`, one can attached as:
 
 .. image:: _static/noaacsp_filesystem_4.png
 
-Alway remember to click `Save Changes` after your make any changes to the cluster.
+Always remember to click `Save Changes` after making any changes to the cluster.
 
 **************************
 Using the NOAA CSP Cluster
@@ -204,7 +202,7 @@ To activate the cluster, click the `cluster` at right panel of the noaa.parallel
 as point by the red-arrow. Then click the `Sessions` button in red-square, and than click the
 button in red-circle. The cluster status is denoted by the color-coded button
 on the right: red, stopped; orange, requested; green, active. The amount of time required to start
-the cluster is variable and not immediate and may take several minutes for the cluster to become.
+the cluster varies and not immediate and may take several minutes for the cluster to become active.
 
 .. image:: _static/noaacsp_using_1.png
 
@@ -215,8 +213,9 @@ when the cluster is activate, user will see:
 4. Click the blue-square with arrow inside pointed by red-arrow 4 will copy the cluster's IP into clipboard,
    which you can open a laptop xterm/window, and do `ssh username@the-ip-address` in the xterm window will connect you
    to the AWS cluster, and you can do you work there.
-4. Which is the `username@the-ip-address`, or your AWS PW cluster. Click it, will have a PW web terminal appear in the
+5. Which is the `username@the-ip-address`, or your AWS PW cluster. Click it, will have a PW web terminal appear in the
    bottom of the web-site, which you can work on this terminal to use your AWS cluster.
+
 Please note, as soon as the cluster is activated, AWS/PW starts charging you for use the cluster.
 As this cluster is exclusive for yourself, AWS keep charging you as long as the cluster is active.
 For running global-workflow, one need to keep the cluster active if there is any rocoto jobs running,
@@ -240,7 +239,7 @@ or access the cluster from your web terminal, one can start clone, compile, and 
 .. code-block:: bash
    cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
    git clone --recursive git@github.com:NOAA-EMC/global-workflow.git
-  #or the develop form at EPIC:
+   #or the develop form at EPIC:
    git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git
 2. compile global-workflow:
 .. code-block:: bash
@@ -249,7 +248,7 @@ or access the cluster from your web terminal, one can start clone, compile, and 
    build_all.sh   # or similar command to compile for gefs, or others.
    link_workflow.sh  # after build_all.sh finished successfully
 
-  #As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.
+   #As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.
    #!/bin/bash
    #SBATCH --job-name=compile
    #SBATCH --account=$USER
@@ -266,14 +265,14 @@ or access the cluster from your web terminal, one can start clone, compile, and 
    cd ${gwhome}/sorc
    source ${gwhome}/workflow/gw_setup.sh
 
-  #build_all.sh
-  build_all.sh -w
-  #build_all.sh -f
-  #build_all.sh -wf
+   #build_all.sh
+   build_all.sh -w
+   #build_all.sh -f
+   #build_all.sh -wf
 
-  link_workflow.sh
+   link_workflow.sh
 
-  #Save the above lines in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"
+   #Save the above lines in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"
 
 3. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached):
 .. code-block:: bash
