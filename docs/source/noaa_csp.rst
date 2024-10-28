@@ -235,22 +235,23 @@ Running the Global Workflow
 
 Assume you have a AWS cluster running, after login to the cluster through `ssh` from your laptop terminal,
 or access the cluster from your web terminal, one can start clone, compile, and run global-workflow.
-1. clone global-workflow( assume you have setup access to githup):
-.. code-block:: bash
+
+1. clone global-workflow( assume you have setup access to githup)::
+
    cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
    git clone --recursive git@github.com:NOAA-EMC/global-workflow.git
    #or the develop form at EPIC:
    git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git
-2. compile global-workflow:
-.. code-block:: bash
+
+2. compile global-workflow::
+
    cd /contrib/$USER/global-workflow
    cd sorc
    build_all.sh   # or similar command to compile for gefs, or others.
    link_workflow.sh  # after build_all.sh finished successfully
 
-As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.
+As users may define a very small cluster as controoler, one may use a script similar to this to compile in compute node.::
 
-.. code-block:: bash
    #!/bin/bash
 
    #SBATCH --job-name=compile
@@ -283,8 +284,8 @@ As users may define a very small cluster as controoler, one may use a script sim
 
 Save the above lines in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"
 
-3. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached):
-.. code-block:: bash
+3. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached)::
+
    cd /contrib/$USER/global-workflow
    
    HPC_ACCOUNT=${USER} pslot=c48atm RUNTESTS=/lustre/$USER/run \
