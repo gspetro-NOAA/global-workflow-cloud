@@ -3,8 +3,8 @@
  restart_date=${RERUN_DATE:-1000010100}
  echo "restart_date: $restart_date"
 
- RERUN=YES
- RERUN_DATE=1994050600
+#RERUN=YES
+#RERUN_DATE=1994050600
 
 # Disable variable not used warnings
 # shellcheck disable=SC2034

@@ -238,9 +238,12 @@ else
     export OFFSET_START_HOUR=0
 fi
 
-export DO_RESTART=@DO_RESTART@
-if [[ "${DO_RESTART:-NO}" == "YES" ]]; then
+export RERUN=@RERUN@
+if [[ "${RERUN:-NO}" == "YES" ]]; then
     export OFFSET_START_HOUR="@FHMIN_GFS@"
+    export RERUN_DATE="@RERUN_DATE@"
+else
+    export RERUN_DATE="1000010100"
 fi
 
 # GFS output and frequency
