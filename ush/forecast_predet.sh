@@ -317,6 +317,11 @@ FV3_predet(){
     make_nh=".false."              # running in hydrostatic mode
   fi
 
+    hydrostatic=".true."
+    phys_hydrostatic=".false."     # ignored when hydrostatic = T
+    use_hydro_pressure=".false."   # ignored when hydrostatic = T
+    make_nh=".false."              # running in hydrostatic mode
+
   # Conserve total energy as heat globally
   consv_te=${consv_te:-1.} # range 0.-1., 1. will restore energy to orig. val. before physics
   if [[ "${DO_NEST:-NO}" == "YES" ]] ; then
