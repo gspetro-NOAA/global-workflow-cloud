@@ -295,7 +295,7 @@ Save the above lines in a file, say, com.slurm, and submit this job with command
    cd /lustre/$USER/run/EXPDIR/c48atm
    crontab c48atm
 
-EPIC has copied the common used data to AWS, and the current code has setup to use those data.
+EPIC has copied the C48 and C96 ATM, GEFS and some other data to AWS, and the current code has setup to use those data.
 If user wants to run own case, user needs to make changes to the IC path and others to make it work.
 The execution of the global-workflow should now follow the same steps
 as those for the RDHPCS on-premise hosts.
