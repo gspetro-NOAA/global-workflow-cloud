@@ -117,6 +117,7 @@ at the top right as shown in the red-circle.
 .. _noaacsp_lustre_1:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_1.png
+   :name: noaacsp_lustre_1
 
 Select `FSx` for the AWS FSx ``/lustre`` filesystem as shown in the red circle.
 Define ``/lustre`` with:
@@ -155,6 +156,7 @@ Then follow the steps illustrated in the :numref:`image below <noaacsp_lustre_4>
 .. _noaacsp_lustre_4:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_4.png
+   :name: noaacsp_lustre_4
 
 For the storage to be allocated for the global-workflow application,
 it is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
