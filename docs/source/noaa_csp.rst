@@ -117,15 +117,15 @@ at the top right as shown in the red-circle.
 (see the red arrow in :numref:`noaacsp_lustre_1.0`), and then click "Add Storage"
 (see the red arrow in :numref:`noaacsp_lustre_3`), and then click "Add Storage"
 
-#.. _noaacsp_lustre_1:
+.. _noaacsp_lustre_1:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_1.png
-   :name: noaacsp_lustre_1.0
+    :name: noaacsp_lustre_1
 
-#.. _noaacsp_lustre_2:
+.. _noaacsp_lustre_2:
 
 .. figure:: noaacsp_lustre_1.png
-   :name: noaacsp_lustre_1.0
+    :name: noaacsp_lustre_1.0
 
 Select `FSx` for the AWS FSx ``/lustre`` filesystem as shown in the red circle.
 Define ``/lustre`` with:
@@ -137,10 +137,10 @@ Define ``/lustre`` with:
 Click "Add Storage" as in red-box at top-right corner.
 This will create a "lustre" filesystem template.
 
-#.. _noaacsp_lustre_3:
+.. _noaacsp_lustre_3:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_2.png
-   :name: noaacsp_lustre_2
+    :name: noaacsp_lustre_2
 	   
 fter creating the template, we need to fill information for this lustre filesystem.
 To do so, go to the NOAA PW website, and click "Lustre" on the left side panel as
