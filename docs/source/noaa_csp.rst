@@ -111,7 +111,7 @@ Add CSP Lustre Filesystem
 To run global-workflow on CSPs, we need to attach the ``/lustre`` filesystem as run directory.
 First, we need to add/define our ``/lustre`` filesystem.
 To do so, navigate to the middle of the NOAA PW website left side panel and select "Lustre"
-(see the red arrow in :numref:`Figure %s <noaacsp_lustre_1>`), and then click "Add Storage"
+(see the red arrow in :numref:`(Figure %s) <noaacsp_lustre_1>`), and then click "Add Storage"
 at the top right as shown in the red-circle.
 
 .. _noaacsp_lustre_1:
@@ -141,7 +141,7 @@ clicking the trash can (indicated by red-arrow 2).
 
 By clicking the filesystem in the red box of the image above,
 users will be led to the lustre definition page.
-Then follow the steps illustrated in the :numref:`image below <noaacsp_lustre_4>`:
+Then follow the steps illustrated in the :numref:`(image) <noaacsp_lustre_4>` below:
 
 #. Choose a size in the `Storage Capacity(GB)` box as pointed by red-arrow 1.
    There is a minium of 1200 by AWS. For C48 ATM/GEFS case this will be enough.
