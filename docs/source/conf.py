@@ -25,6 +25,7 @@ author = 'Kate Friedman, Walter Kolczynski, Rahul Mahajan, Lin Gan, and numerous
 # The full version, including alpha/beta/rc tags
 release = '0.1'
 
+numfig = True
 
 # -- General configuration ---------------------------------------------------
 
@@ -120,8 +121,4 @@ def setup(app):
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Global-Workflow'
-
-# -- Options for Images reference --------------------------------------------
-
-numfig = True
 
