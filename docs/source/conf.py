@@ -120,3 +120,8 @@ def setup(app):
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'Global-Workflow'
+
+# -- Options for Images reference --------------------------------------------
+
+numfig = True
+
