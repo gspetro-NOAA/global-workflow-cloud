@@ -72,18 +72,18 @@ Scroll down to selecet "AWS EPIC Wei CentOS" circled in red.
 Note that the urrent global-workflow is still using CentOS built spack-stack,
 but it will be updated to Rocky 8 soon.
 
-.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_inistance_1.png
+.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_1.png
 
 Next, click "Fork latest" as shown in the red-circle.
 
-.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_inistance_2.png
+.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_2.png
    
 Please provide a unique name in the "New compute node" field for the instance
 (see the box pointer by the red arrow).
 Best practices suggest one that is clear, concise, and relevant to the application.
 Click ``Fork`` (in the red-circle) to fork an instance.
 
-.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_inistance_3.png
+.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_3.png
 
 Now, an instance is forked, and it is time to configure the cluster.
 
@@ -95,7 +95,7 @@ Now, an instance is forked, and it is time to configure the cluster.
 
 Click "Save Changes" at top-right as shown in red circle.
 
-.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_inistance_4.png
+.. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_4.png
 
 The NOAA ParallelWorks (PW) currently provides 3 CSPs:
 **AWS** (Amazon Web Services), **Azure** (Microsoft Azure),
