@@ -115,6 +115,7 @@ To do so, navigate to the middle of the NOAA PW website left side panel and sele
 at the top right as shown in the red-circle.
 
 .. _noaacsp_lustre_1:
+
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_1.png
 
 Select `FSx` for the AWS FSx ``/lustre`` filesystem as shown in the red circle.
@@ -139,7 +140,7 @@ clicking the trash can (indicated by red-arrow 2).
 
 By clicking the filesystem in the red box of the image above,
 users will be led to the lustre definition page.
-Then follow the steps illustrated in the :ref:`image below <noaacsp_lustre_4>`:
+Then follow the steps illustrated in the :numref:`image below <noaacsp_lustre_4>`:
 
 #. Choose a size in the `Storage Capacity(GB)` box as pointed by red-arrow 1.
    There is a minium of 1200 by AWS. For C48 ATM/GEFS case this will be enough.
@@ -148,7 +149,7 @@ Then follow the steps illustrated in the :ref:`image below <noaacsp_lustre_4>`:
    Do not use SCRATCH_1, as it is used for test by PW.
 #. Choose **NONE** for `File System Compression` as pointed by red-arrow 3.
    Only choose LZ4 if you understand what it means.
-#. Leave "S2 Import Path" and "S3 Export Path" black for now.
+#. Leave "S3 Import Path" and "S3 Export Path" black for now.
 #. Click **Save Changes** in red-circle to save the definition/(changes made).
 
 .. _noaacsp_lustre_4:
