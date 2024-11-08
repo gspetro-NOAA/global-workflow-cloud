@@ -22,10 +22,12 @@ case "${MACHINE_ID}" in
     #    to be the same as the login node.  This should be workng from in the
     #    ALLNODES section of the User Bootstrap of Parllel Works but it doen't
     #    on the Rokcky Clusters (works fine in the Centos 7 cluster)
-   #if [[ ! -d  /contrib-epic/EPIC ]]; then
-   #  /contrib/Terry.McGuinness/SETUP/mount-epic-contrib.sh
-   #  sudo systemctl daemon-reload
-   #fi
+    if [[ ! -d  /contrib-epic/EPIC ]]; then
+      if [[ -d  /contrib/Terry.McGuinness/SETUP ]]; then
+        /contrib/Terry.McGuinness/SETUP/mount-epic-contrib.sh
+        sudo systemctl daemon-reload
+      fi
+    fi
     # Check if the OS is Rocky or CentOS
     OS_NAME=$(grep -E '^ID=' /etc/os-release | sed -E 's/ID="?([^"]*)"?/\1/') || true
     # Source versions file for runtime
