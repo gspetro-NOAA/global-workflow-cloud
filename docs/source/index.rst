@@ -31,14 +31,9 @@ GitHub updates: Users should adjust their "Watch" settings for this repo so they
 Table of Contents
 =================
 
-##.. toctree::
-##   :numbered:
-##   :maxdepth: 3
 .. toctree::
-   :maxdepth: 3
-   :caption: Home
-   :hidden:
    :numbered:
+   :maxdepth: 3
 
    development.rst
    components.rst
