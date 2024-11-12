@@ -56,8 +56,9 @@ screen. Click the "blue" box indicated by the red arrow to login.
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_login_1.png
    :name: noaacsp_login_1
    :class: with-border
+   :align: center
 
-   NOAA-PARALLElWORKS Home Page
+   Figure %s NOAA-PARALLElWORKS Home Page
 
 Fill the ``Username / Email`` box with your username or NOAA email (usually in "FirstName.LastName" format).
 Note that the ``Username or email`` query field is case-sensitive.
@@ -67,8 +68,9 @@ for access to other RDHPCS machines (e.g., Hera, Gaea).
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_login_2.png
    :name: noaacsp_login_2
    :class: with-border
+   :align: center
 
-   NOASS-PARALLELWORKS Login Page
+   Figure %s NOASS-PARALLELWORKS Login Page
 
 *******************************
 Configure the NOAA CSP Instance
