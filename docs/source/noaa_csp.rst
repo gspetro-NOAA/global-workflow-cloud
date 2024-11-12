@@ -51,7 +51,7 @@ Login to the NOAA CSP
 
 Log in to the `NOAA CSP <http://noaa.parallel.works/login>`_ and into
 the resources configuration. The user should arrive at the following
-screen. Click the "blue" box indicated by the red arrow to login.
+screen as in Figure 1. Click the "blue" box indicated by the red arrow to login.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_login_1.png
    :name: noaacsp_login_1
@@ -60,7 +60,7 @@ screen. Click the "blue" box indicated by the red arrow to login.
 
    Figure 1 NOAA-PARALLElWORKS Home Page
 
-Fill the ``Username / Email`` box with your username or NOAA email (usually in "FirstName.LastName" format).
+As shown in Figure 2, Fill the ``Username / Email`` box with your username or NOAA email (usually in "FirstName.LastName" format).
 Note that the ``Username or email`` query field is case-sensitive.
 Then enter the respective ``Pin + RSA`` combination using the same RSA token application used
 for access to other RDHPCS machines (e.g., Hera, Gaea).
@@ -77,9 +77,9 @@ Configure the NOAA CSP Instance
 *******************************
 
 Once logged into the NOAA CSP, navigate to the ``Marketplace`` section
-in the left sidebar as indicated by the red arrow, and click.
+in the left sidebar as indicated by the red arrow in Figure 3, and click.
 Scroll down to selecet "AWS EPIC Wei CentOS" circled in red.
-Note that the urrent global-workflow is still using CentOS built spack-stack,
+Note that the current global-workflow is still using CentOS built spack-stack,
 but it will be updated to Rocky 8 soon.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_1.png
@@ -89,7 +89,7 @@ but it will be updated to Rocky 8 soon.
 
    Figure 3 ParallWork Marketplace
 
-Next, click "Fork latest" as shown in the red-circle.
+Next, click "Fork latest" as shown in the red-circle in Figure 4.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_2.png
    :name: noaacsp_instance_2
@@ -99,7 +99,7 @@ Next, click "Fork latest" as shown in the red-circle.
    Figure 4 Fork Instance From Marketplace
    
 Please provide a unique name in the "New compute node" field for the instance
-(see the box pointer by the red arrow).
+(see the box pointer by the red arrow in Figure 5).
 Best practices suggest one that is clear, concise, and relevant to the application.
 Click ``Fork`` (in the red-circle) to fork an instance.
 
@@ -110,7 +110,7 @@ Click ``Fork`` (in the red-circle) to fork an instance.
 
    Figure 5 Create the Fork
 
-Now, an instance is forked, and it is time to configure the cluster.
+Now, an instance is forked, and it is time to configure the cluster. Fellow these steps as shown in Figure 6:
 
 #. Select a "Resource Account"; usually it is *NOAA AWS Commercial Vault*.
 #. Select a "Group", which will be something like: ca-epic, ca-sfs-emc, etc.
@@ -141,10 +141,8 @@ Add CSP Lustre Filesystem
 To run global-workflow on CSPs, we need to attach the ``/lustre`` filesystem as run directory.
 First, we need to add/define our ``/lustre`` filesystem.
 To do so, navigate to the middle of the NOAA PW website left side panel and select "Lustre"
-(see the red arrow in :numref:`(Figure %s) <noaacsp_lustre_1>`), and then click "Add Storage"
+(see the red arrow in Figure 7), and then click "Add Storage"
 at the top right as shown in the red-circle.
-
-.. _noaacsp_lustre_1:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_1.png
    :name: noaacsp_lustre_1
@@ -154,14 +152,16 @@ at the top right as shown in the red-circle.
    Figure 7 Add Lustre Storage
 
 Select `FSx` for the AWS FSx ``/lustre`` filesystem as shown in the red circle.
-Define ``/lustre`` with:
+
+Define ``/lustre`` with steps in Figure 8:
 
 #. A clear and meaningful `Resource name` as shown by the first red arrow
 #. A short sentence for `Description`, as shown in the second red arrow
 #. Choose **linux** for `Tag` as shown by red arrow #3
 
 Click "Add Storage" as in red-box at top-right corner.
-This will create a "lustre" filesystem template.
+
+This will create a "lustre" filesystem template as in red-squre as in Figure 8.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_2.png
    :name: noaacsp_lustre_2
@@ -170,9 +170,9 @@ This will create a "lustre" filesystem template.
 
    Figure 8 Define Lustre Attributes
 	   
-fter creating the template, we need to fill information for this lustre filesystem.
+After creating the template, we need to fill information for this lustre filesystem.
 To do so, go to the NOAA PW website, and click "Lustre" on the left side panel as
-indicated by red arrow 1. Then select the filesystem defined above by `Resource name`,
+indicated by red arrow 1 as in Figure 8. Then select the filesystem defined above by `Resource name`,
 as shown in the red box. Here, the user can delete this resource if not needed by
 clicking the trash can (indicated by red-arrow 2).
 
@@ -185,7 +185,8 @@ clicking the trash can (indicated by red-arrow 2).
 
 By clicking the filesystem in the red box of the image above,
 users will be led to the lustre definition page.
-Then follow the steps illustrated in the :numref:`(image) <noaacsp_lustre_4>` below:
+
+Then follow the steps illustrated in Figure 9 as below:
 
 #. Choose a size in the `Storage Capacity(GB)` box as pointed by red-arrow 1.
    There is a minium of 1200 by AWS. For C48 ATM/GEFS case this will be enough.
@@ -202,7 +203,7 @@ Then follow the steps illustrated in the :numref:`(image) <noaacsp_lustre_4>` be
    :class: with-border
    :align: center
 
-   Figure 10 Alway Save the Chnages
+   Figure 10 Defining the Lustre Filesystem Capacity
 
 For the storage to be allocated for the global-workflow application,
 it is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
@@ -214,7 +215,7 @@ Attach CSP Lustre Filesystem
 
 Now we need to attach the defined filesystem to our cluster.
 Go back to our noaa.parallel.works web-site, and click `Cluster`
-as shown in figuer below, then select the cluster "AWS EPIC Wei CentOS example"
+as shown in Figuer 11 below, then select the cluster "AWS EPIC Wei CentOS example"
 (it should be your own cluster) cluster as show in red-box.
 Note, one can remove/delete this cluster if no longer needed by
 click the trash-can shown in the red-circle at right.
@@ -226,9 +227,9 @@ click the trash-can shown in the red-circle at right.
 
    Figure 11 Add Attached Filesystems
 
-When get into the cluster page, click the `Definition` in the top menu as
-in the red-box. When finished, remeber to click `Save Changes` to save
-the changes.
+When get into the cluster page we will see things as in Figure 12, click the `Definition` in the top menu as
+in the red-box. Then we can attached the defined filesystems.
+When finished, remeber to click `Save Changes` to save the changes.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_2.png
    :name: noaacsp_filesystem_2
@@ -237,7 +238,7 @@ the changes.
 
    Figure 12 Add Attached /lustre and/or /bucket Filesystems
 
-Scroll down to the bottom, and click `Add Attached Filesystems` as in the red-circle.
+Scroll down to the bottom as show in Figure 13, and click `Add Attached Filesystems` as in the red-circle.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_3.png
    :name: noaacsp_filesystem_3
@@ -246,7 +247,8 @@ Scroll down to the bottom, and click `Add Attached Filesystems` as in the red-ci
 
    Figure 13 Add Attached /lustre and/or /bucket Filesystems
 
-After clicking `Add Attached Filesystems`, `Attached Filesystems settings` will appear.
+After clicking `Add Attached Filesystems`, `Attached Filesystems settings`, following steps listed here
+which also shown in Figure 14.
 
 #. In the `Storage` box, select the lustre filesystem defined above, as in red-arrow 1.
 #. In the `Mount Point` box, name it `/lustre` (the common and default choice) as pointed by red-arrow 2.
@@ -271,7 +273,7 @@ Always remember to click `Save Changes` after making any changes to the cluster.
 Using the NOAA CSP Cluster
 **************************
 
-To activate the cluster, click `Clusters` on the left panel of the NOAA PW website,
+To activate the cluster, click `Clusters` on the left panel of the NOAA PW website shown in Figure 15,
 as indicated by the red arrow. Then click the `Sessions` button in the red square, and click the power
 button in the red circle. The cluster status is denoted by the color-coded button
 on the right: red means stopped; orange  means requested; green means active. The amount of time required to start
@@ -284,7 +286,7 @@ the cluster varies and is not immediate; it may take several minutes (often 10-2
 
    Figure 15 Activate the Cluster
 
-when the cluster is activate, user will see:
+when the cluster is activate, user will see things numbered in Figure 16 and also listed below:
 #. Green dot means the cluster is active, pointed by red-arrow 1.
 #. Green dot means the cluster is active, pointed by red-arrow 2.
 #. Green button means the cluster is active, pointed by red-arrow 3.
@@ -307,8 +309,8 @@ as rocoto is using `crontab`, which needs the cluster active all the time, or th
    Figure 16 Knowing the Cluster
 
 After finishing your work on the AWS cluster, you should terminate/stop the cluster, unless you have reasons to keep it active.
-To stop/terminate the cluster, go to the cluster session, and click the `green` power button. A window pop up, and click the
-red `Turn Off` button to switch off the cluster. 
+To stop/terminate the cluster, go to the cluster session, and click the `green` power button as show in Figure 17.
+A window pop up, and click the red `Turn Off` button to switch off the cluster. 
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_3.png
    :name: noaacsp_using_3
