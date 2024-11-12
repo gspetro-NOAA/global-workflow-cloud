@@ -58,7 +58,7 @@ screen. Click the "blue" box indicated by the red arrow to login.
    :class: with-border
    :align: center
 
-   Figure %s NOAA-PARALLElWORKS Home Page
+   Figure 1 NOAA-PARALLElWORKS Home Page
 
 Fill the ``Username / Email`` box with your username or NOAA email (usually in "FirstName.LastName" format).
 Note that the ``Username or email`` query field is case-sensitive.
@@ -70,7 +70,7 @@ for access to other RDHPCS machines (e.g., Hera, Gaea).
    :class: with-border
    :align: center
 
-   Figure %s NOASS-PARALLELWORKS Login Page
+   Figure 2 NOASS-PARALLELWORKS Login Page
 
 *******************************
 Configure the NOAA CSP Instance
@@ -83,10 +83,20 @@ Note that the urrent global-workflow is still using CentOS built spack-stack,
 but it will be updated to Rocky 8 soon.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_1.png
+   :name: noaacsp_instance_1
+   :class: with-border
+   :align: center
+
+   Figure 3 ParallWork Marketplace
 
 Next, click "Fork latest" as shown in the red-circle.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_2.png
+   :name: noaacsp_instance_2
+   :class: with-border
+   :align: center
+
+   Figure 4 Fork Instance From Marketplace
    
 Please provide a unique name in the "New compute node" field for the instance
 (see the box pointer by the red arrow).
@@ -94,6 +104,11 @@ Best practices suggest one that is clear, concise, and relevant to the applicati
 Click ``Fork`` (in the red-circle) to fork an instance.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_3.png
+   :name: noaacsp_instance_3
+   :class: with-border
+   :align: center
+
+   Figure 5 Create the Fork
 
 Now, an instance is forked, and it is time to configure the cluster.
 
@@ -106,6 +121,11 @@ Now, an instance is forked, and it is time to configure the cluster.
 Click "Save Changes" at top-right as shown in red circle.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_instance_4.png
+   :name: noaacsp_instance_4
+   :class: with-border
+   :align: center
+
+   Figure 6 Save the Instance
 
 The NOAA ParallelWorks (PW) currently provides 3 CSPs:
 **AWS** (Amazon Web Services), **Azure** (Microsoft Azure),
@@ -127,7 +147,11 @@ at the top right as shown in the red-circle.
 .. _noaacsp_lustre_1:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_1.png
-    :name: noaacsp_lustre_1
+   :name: noaacsp_lustre_1
+   :class: with-border
+   :align: center
+
+   Figure 7 Add Lustre Storage
 
 Select `FSx` for the AWS FSx ``/lustre`` filesystem as shown in the red circle.
 Define ``/lustre`` with:
@@ -140,6 +164,11 @@ Click "Add Storage" as in red-box at top-right corner.
 This will create a "lustre" filesystem template.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_2.png
+   :name: noaacsp_lustre_2
+   :class: with-border
+   :align: center
+
+   Figure 8 Define Lustre Attributes
 	   
 fter creating the template, we need to fill information for this lustre filesystem.
 To do so, go to the NOAA PW website, and click "Lustre" on the left side panel as
@@ -148,6 +177,11 @@ as shown in the red box. Here, the user can delete this resource if not needed b
 clicking the trash can (indicated by red-arrow 2).
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_3.png
+   :name: noaacsp_lustre_3
+   :class: with-border
+   :align: center
+
+   Figure 9 Show the Lustre in PW page
 
 By clicking the filesystem in the red box of the image above,
 users will be led to the lustre definition page.
@@ -163,10 +197,12 @@ Then follow the steps illustrated in the :numref:`(image) <noaacsp_lustre_4>` be
 #. Leave "S3 Import Path" and "S3 Export Path" black for now.
 #. Click **Save Changes** in red-circle to save the definition/(changes made).
 
-.. _noaacsp_lustre_4:
-
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_4.png
    :name: noaacsp_lustre_4
+   :class: with-border
+   :align: center
+
+   Figure 10 Alway Save the Chnages
 
 For the storage to be allocated for the global-workflow application,
 it is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
@@ -184,16 +220,31 @@ Note, one can remove/delete this cluster if no longer needed by
 click the trash-can shown in the red-circle at right.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_1.png
+   :name: noaacsp_filesystem_1
+   :class: with-border
+   :align: center
+
+   Figure 11 Add Attached Filesystems
 
 When get into the cluster page, click the `Definition` in the top menu as
-in the red-box. When finished, remeber to clicke `Save Changes` to save
+in the red-box. When finished, remeber to click `Save Changes` to save
 the changes.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_2.png
+   :name: noaacsp_filesystem_2
+   :class: with-border
+   :align: center
+
+   Figure 12 Add Attached /lustre and/or /bucket Filesystems
 
 Scroll down to the bottom, and click `Add Attached Filesystems` as in the red-circle.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_3.png
+   :name: noaacsp_filesystem_3
+   :class: with-border
+   :align: center
+
+   Figure 13 Add Attached /lustre and/or /bucket Filesystems
 
 After clicking `Add Attached Filesystems`, `Attached Filesystems settings` will appear.
 
@@ -208,6 +259,11 @@ If you have a `S3 bucket`, one can attached as:
 #. In the `Mount Point` box, name it `/bucket` (the common and default choice) as pointed by red-arrow 4.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_4.png
+   :name: noaacsp_filesystem_4
+   :class: with-border
+   :align: center
+
+   Figure 14 Add Attached /lustre and/or /bucket Filesystems
 
 Always remember to click `Save Changes` after making any changes to the cluster.
 
@@ -222,6 +278,11 @@ on the right: red means stopped; orange  means requested; green means active. Th
 the cluster varies and is not immediate; it may take several minutes (often 10-20) for the cluster to become active.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_1.png
+   :name: noaacsp_using_1
+   :class: with-border
+   :align: center
+
+   Figure 15 Activate the Cluster
 
 when the cluster is activate, user will see:
 #. Green dot means the cluster is active, pointed by red-arrow 1.
@@ -239,12 +300,22 @@ For running global-workflow, one need to keep the cluster active if there is any
 as rocoto is using `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_2.png
+   :name: noaacsp_using_2
+   :class: with-border
+   :align: center
+
+   Figure 16 Knowing the Cluster
 
 After finishing your work on the AWS cluster, you should terminate/stop the cluster, unless you have reasons to keep it active.
 To stop/terminate the cluster, go to the cluster session, and click the `green` power button. A window pop up, and click the
 red `Turn Off` button to switch off the cluster. 
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_3.png
+   :name: noaacsp_using_3
+   :class: with-border
+   :align: center
+
+   Figure 17 Terminating the Cluster
 
 ***************************
 Running the Global Workflow
