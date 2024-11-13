@@ -383,4 +383,4 @@ or access the cluster from your web terminal, one can start clone, compile, and 
 EPIC has copied the C48 and C96 ATM, GEFS and some other data to AWS, and the current code has setup to use those data.
 If user wants to run own case, user needs to make changes to the IC path and others to make it work.
 The execution of the global-workflow should now follow the same steps
-as those for the RDHPCS on-premise hosts.
+as those for the RDHPCS on-premises hosts.
