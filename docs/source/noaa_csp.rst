@@ -287,6 +287,7 @@ the cluster varies and is not immediate; it may take several minutes (often 10-2
    Figure 15 Activate the Cluster
 
 when the cluster is activate, user will see things numbered in Figure 16 and also listed below:
+
 #. Green dot means the cluster is active, pointed by red-arrow 1.
 #. Green dot means the cluster is active, pointed by red-arrow 2.
 #. Green button means the cluster is active, pointed by red-arrow 3.
