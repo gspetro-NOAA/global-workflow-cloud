@@ -328,58 +328,70 @@ Assume you have a AWS cluster running, after login to the cluster through `ssh` 
 or access the cluster from your web terminal, one can start clone, compile, and run global-workflow.
 
 #. clone global-workflow(assume you have setup access to githup)::
+
    .. code-block:: console
 
-     cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
-     git clone --recursive git@github.com:NOAA-EMC/global-workflow.git global-workflow
-     #or the develop form at EPIC:
-     git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git global-workflow-cloud
+      cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
+
+      git clone --recursive git@github.com:NOAA-EMC/global-workflow.git global-workflow
+
+      #or the develop form at EPIC:
+
+      git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git global-workflow-cloud
 
 #. compile global-workflow::
+
    .. code-block:: console
 
-     cd /contrib/$USER/global-workflow
-     cd sorc
-     build_all.sh   # or similar command to compile for gefs, or others.
-     link_workflow.sh  # after build_all.sh finished successfully
+      cd /contrib/$USER/global-workflow
 
-#. As users may define a very small cluster as controller, one may use the script below to compile in compute node.
-   Save the this script in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"::
+      cd sorc
+
+      build_all.sh   # or similar command to compile for gefs, or others.
+
+      link_workflow.sh  # after build_all.sh finished successfully
+
+#. As users may define a very small cluster as controller, one may use the script below to compile in compute node::
+
    .. code-block:: console
 
-     #!/bin/bash
-     #SBATCH --job-name=compile
-     #SBATCH --account=$USER
-     #SBATCH --qos=batch
-     #SBATCH --partition=compute
-     #SBATCH -t 04:15:00
-     #SBATCH --nodes=1
-     #SBATCH -o compile.%J.log
-     #SBATCH --exclusive
+      #!/bin/bash
+      #SBATCH --job-name=compile
+      #SBATCH --account=$USER
+      #SBATCH --qos=batch
+      #SBATCH --partition=compute
+      #SBATCH -t 04:15:00
+      #SBATCH --nodes=1
+      #SBATCH -o compile.%J.log
+      #SBATCH --exclusive
 
-     set -x
+      set -x
 
-     gwhome=/contrib/Wei.Huang/src/global-workflow-cloud
-     cd ${gwhome}/sorc
-     source ${gwhome}/workflow/gw_setup.sh
+      gwhome=/contrib/Wei.Huang/src/global-workflow-cloud
+      cd ${gwhome}/sorc
+      source ${gwhome}/workflow/gw_setup.sh
+ 
+      #build_all.sh
 
-     #build_all.sh
+      build_all.sh -w
 
-     build_all.sh -w
+      link_workflow.sh
 
-     link_workflow.sh
+   .. note::
+      Save the this script in a file, say, com.slurm, and submit this job with command "sbatch com.slurm".
 
 #. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached)::
+
    .. code-block:: console
 
-     cd /contrib/$USER/global-workflow
+      cd /contrib/$USER/global-workflow
 
-     HPC_ACCOUNT=${USER} pslot=c48atm RUNTESTS=/lustre/$USER/run \
+      HPC_ACCOUNT=${USER} pslot=c48atm RUNTESTS=/lustre/$USER/run \
           ./workflow/create_experiment.py \
           --yaml ci/cases/pr/C48_ATM.yaml
 
-     cd /lustre/$USER/run/EXPDIR/c48atm
-     crontab c48atm
+      cd /lustre/$USER/run/EXPDIR/c48atm
+      crontab c48atm
 
 EPIC has copied the C48 and C96 ATM, GEFS and some other data to AWS, and the current code has setup to use those data.
 If user wants to run own case, user needs to make changes to the IC path and others to make it work.
