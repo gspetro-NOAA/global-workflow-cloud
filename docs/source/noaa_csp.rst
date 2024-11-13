@@ -328,8 +328,7 @@ Assume you have a AWS cluster running, after login to the cluster through `ssh` 
 or access the cluster from your web terminal, one can start clone, compile, and run global-workflow.
 
 #. clone global-workflow(assume you have setup access to githup)::
-
-.. code-block:: console
+   .. code-block:: console
 
      cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
      git clone --recursive git@github.com:NOAA-EMC/global-workflow.git global-workflow
@@ -337,8 +336,7 @@ or access the cluster from your web terminal, one can start clone, compile, and 
      git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git global-workflow-cloud
 
 #. compile global-workflow::
-
-.. code-block:: console
+   .. code-block:: console
 
      cd /contrib/$USER/global-workflow
      cd sorc
@@ -347,8 +345,7 @@ or access the cluster from your web terminal, one can start clone, compile, and 
 
 #. As users may define a very small cluster as controller, one may use the script below to compile in compute node.
    Save the this script in a file, say, com.slurm, and submit this job with command "sbatch com.slurm"::
-
-.. code-block:: console
+   .. code-block:: console
 
      #!/bin/bash
      #SBATCH --job-name=compile
@@ -373,8 +370,7 @@ or access the cluster from your web terminal, one can start clone, compile, and 
      link_workflow.sh
 
 #. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached)::
-
-.. code-block:: console
+   .. code-block:: console
 
      cd /contrib/$USER/global-workflow
 
