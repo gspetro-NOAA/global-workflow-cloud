@@ -6,9 +6,13 @@ load(pathJoin("rocoto"))
 
 prepend_path("MODULEPATH", "/contrib/spack-stack-rocky8/spack-stack-1.6.0/envs/ue-intel/install/modulefiles/Core")
 prepend_path("MODULEPATH", "/apps/modules/modulefiles")
+
 load("gnu")
-load("stack-intel")
-load("stack-intel-oneapi-mpi")
+local stack_intel_ver=os.getenv("stack_intel_ver") or "2021.10.0"
+local stack_mpi_ver=os.getenv("stack_mpi_ver") or "2021.10.0"
+
+load(pathJoin("stack-intel", stack_intel_ver))
+load(pathJoin("stack-intel-oneapi-mpi", stack_mpi_ver))
 unload("gnu")
 
 load("py-jinja2")
