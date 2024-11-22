@@ -297,10 +297,10 @@ when the cluster is activate, user will see things numbered in Figure 16 and als
 #. Which is the `username@the-ip-address`, or your AWS PW cluster. Click it, will have a PW web terminal appear in the
    bottom of the web-site, which you can work on this terminal to use your AWS cluster.
 
-Please note, as soon as the cluster is activated, AWS/PW starts charging you for use the cluster.
-As this cluster is exclusive for yourself, AWS keep charging you as long as the cluster is active.
-For running global-workflow, one need to keep the cluster active if there is any rocoto jobs running,
-as rocoto is using `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
+Please note, as soon as the cluster is activated, AWS/PW starts charging you for use of the cluster.
+As this cluster is exclusive for yourself, AWS will keep charging you as long as the cluster is active.
+For running global-workflow, one needs to keep the cluster active if there are any Rocoto jobs running,
+as Rocoto is using `crontab`, which needs the cluster active all the times, or the crontab job(s) will be terminated.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_2.png
    :name: noaacsp_using_2
