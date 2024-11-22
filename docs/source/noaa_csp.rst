@@ -312,23 +312,23 @@ the cluster varies and is not immediate; it may take several minutes (often 10-2
    :class: with-border
    :align: center
 
-   Figure 15 Activate the Cluster
+   Activate the Cluster
 
-When the cluster is activated, users will see the following indicators of success listed below in seen in :numref:`Figure %s <cluster-success>`:
+When the cluster is activated, users will see the following indicators of success listed below as seen in :numref:`Figure %s <cluster-success>`:
 
-#. A green dot means the cluster is active, indicated by red arrow 1.
-#. A green dot means the cluster is active, indicated by red arrow 2.
-#. A green button means the cluster is active, indicated by red arrow 3.
+#. A green dot on the left beside the AWS logo means that the cluster is active (indicated by red arrow 1).
+#. A green dot on the right labeled "active" means that the cluster is active (indicated by red arrow 2).
+#. A green power button means the cluster is active (indicated by red arrow 3).
 #. Clicking the clipboard icon (blue square with arrow inside), indicated by red arrow 4 will copy the cluster's IP address into the clipboard. Then,
-   you can open a laptop terminal window (such as xterm), and do ``ssh username@the-ip-address``. This will connect you
+   you can open a laptop terminal window (such as xterm), and run ``ssh username@the-ip-address``. This will connect you
    to the AWS cluster, and you can do your work there.
-#. Which is the `username@the-ip-address`, or your AWS PW cluster. Click it, will have a PW web terminal appear in the
-   bottom of the web-site, which you can work on this terminal to use your AWS cluster.
+#. Alternatively, users can click directly on the ``username@the-ip-address``, and a PW web terminal will appear at the
+   bottom of the website. Users can work through this terminal to use their AWS cluster.
 
-Please note, as soon as the cluster is activated, AWS/PW starts charging you for use the cluster.
-As this cluster is exclusive for yourself, AWS keep charging you as long as the cluster is active.
-For running global-workflow, one need to keep the cluster active if there is any rocoto jobs running,
-as rocoto is using `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
+Please note, as soon as the cluster is activated, AWS/PW starts charging you for use of the cluster.
+As this cluster is exclusive for yourself, AWS keeps charging you as long as the cluster is active.
+For running global-workflow, one needs to keep the cluster active if there are any Rocoto jobs running
+because Rocoto uses `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
 
 .. _cluster-success:
 
@@ -337,46 +337,48 @@ as rocoto is using `crontab`, which needs the cluster active all the time, or th
    :class: with-border
    :align: center
 
-   Figure 16 Knowing the Cluster
+   Knowing the Cluster
 
 After finishing your work on the AWS cluster, you should terminate/stop the cluster, unless you have reasons to keep it active.
-To stop/terminate the cluster, go to the cluster session, and click the `green` power button as show in Figure 17.
-A window pop up, and click the red `Turn Off` button to switch off the cluster. 
+To stop/terminate the cluster, go to the cluster session, and click the green power button as show in :numref:`Figure %s <stop-cluster>`.
+A window will pop up; click the red *Turn Off* button to switch off the cluster. 
+
+.. _stop-cluster:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_3.png
    :name: noaacsp_using_3
    :class: with-border
    :align: center
 
-   Figure 17 Terminating the Cluster
+   Terminating the Cluster
 
 ***************************
 Running the Global Workflow
 ***************************
 
-Assume you have a AWS cluster running, after login to the cluster through `ssh` from your laptop terminal,
-or access the cluster from your web terminal, one can start clone, compile, and run global-workflow.
+Assuming you have an AWS cluster running, after logging in to the cluster through ``ssh`` from your laptop terminal
+or accessing the cluster from your web terminal, you can start to clone, compile, and run global-workflow.
 
-#. clone global-workflow(assume you have setup access to githup):
+#. Clone global-workflow (assumes you have set up access to GitHub):
 
    .. code-block:: console
 
-      cd /contrib/$USER   #you should have a username, and have a directory at /contrib where we save our permanent files.
+      cd /contrib/$USER   #you should have a username and have a directory at /contrib, where we save our permanent files.
       git clone --recursive git@github.com:NOAA-EMC/global-workflow.git global-workflow
       #or the develop fork at EPIC:
       git clone --recursive git@github.com:NOAA-EPIC/global-workflow-cloud.git global-workflow-cloud
 
-#. compile global-workflow:
+#. Compile global-workflow:
 
    .. code-block:: console
 
-      cd /contrib/$USER/global-workflow
+      cd /contrib/$USER/global-workflow #or cd /contrib/$USER/global-workflow-cloud depending on which one you cloned
       cd sorc
-      build_all.sh   # or similar command to compile for gefs, or others.
+      build_all.sh      # or similar command to compile for gefs, or others.
       link_workflow.sh  # after build_all.sh finished successfully
 
 #. As users may define a very small cluster as controller, one may use the script below to compile in compute node.
-   Save the this script in a file, say, com.slurm, and submit this job with command "sbatch com.slurm":
+   Save the this script in a file, say, ``com.slurm``, and submit this job with command ``sbatch com.slurm``:
 
    .. code-block:: console
 
@@ -390,14 +392,14 @@ or access the cluster from your web terminal, one can start clone, compile, and 
       #SBATCH -o compile.%J.log
       #SBATCH --exclusive
 
-      gwhome=/contrib/Wei.Huang/src/global-workflow-cloud  # Change this to your own "global-workflow" source dir
+      gwhome=/contrib/Wei.Huang/src/global-workflow-cloud  # Change this to your own "global-workflow" source directory
       cd ${gwhome}/sorc
       source ${gwhome}/workflow/gw_setup.sh
       #build_all.sh
       build_all.sh -w
       link_workflow.sh
 
-#. run global-workflow C48 ATM test case (assume user has /lustre filesystem attached):
+#. Run global-workflow C48 ATM test case (assumes user has ``/lustre`` filesystem attached):
 
    .. code-block:: console
 
@@ -410,7 +412,7 @@ or access the cluster from your web terminal, one can start clone, compile, and 
       cd /lustre/$USER/run/EXPDIR/c48atm
       crontab c48atm
 
-EPIC has copied the C48 and C96 ATM, GEFS and some other data to AWS, and the current code has setup to use those data.
-If user wants to run own case, user needs to make changes to the IC path and others to make it work.
+EPIC has copied the C48 and C96 ATM, GEFS, and some other data to AWS, and the current code has been set up to use those data.
+If users want to run their own case, they need to make changes to the IC path and others to make it work.
 The execution of the global-workflow should now follow the same steps
 as those for the RDHPCS on-premises hosts.
