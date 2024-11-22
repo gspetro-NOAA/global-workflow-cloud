@@ -93,7 +93,7 @@ but it will be updated to Rocky 8 soon.
    :class: with-border
    :align: center
 
-   ParallWorks Marketplace
+   ParallelWorks Marketplace
 
 Next, click "Fork latest" as shown in the red-circle in :numref:`Figure %s<fork-latest>`.
 
@@ -128,7 +128,7 @@ Now, an instance is forked, and it is time to configure the cluster. Follow thes
 #. Modify *User Bootstrap*. If you are not using the ``ca-epic`` group, please UNCOMMENT line 2.
 #. Keep *Health Check* as it is.
 
-Click *Save Changes* at top-right as shown in red circle.
+Click *Save Changes* at the top-right as shown in the red circle.
 
 .. _config-cluster:
 
@@ -155,6 +155,8 @@ First, we need to add/define our ``/lustre`` filesystem.
 To do so, navigate to the middle of the NOAA PW website left side panel and select *Lustre*
 (see the red arrow in :numref:`Figure %s <select-lustre>`), and then click *Add Storage*
 at the top right, as shown in the red circle.
+
+.. _select-lustre:
 
 .. _select-lustre:
 
@@ -227,7 +229,7 @@ Then follow the steps illustrated in :numref:`Figure %s <config-lustre>` below:
 
 For the storage to be allocated for the global-workflow application,
 it is suggested that the ``Mount Point`` be ``/lustre``. Once the storage
-has been configured, follow the steps below to attach the ``/lustre`` Filesystem.
+has been configured, follow the steps below to attach the ``/lustre`` filesystem.
 
 ******************************
 Attach CSP Lustre Filesystem
@@ -235,7 +237,7 @@ Attach CSP Lustre Filesystem
 
 Now we need to attach the defined filesystem to our cluster.
 Go back to our the NOAA PW website (https://noaa.parallel.works), and click *Cluster*
-as shown in :numref:`Figure %s <select-cluster>` below, then select the cluster you made (e.g., "AWS EPIC Wei CentOS example" cluster, as show in the red box below).
+as shown in :numref:`Figure %s <select-cluster>` below, then select the cluster you made (e.g., ``AWS EPIC Wei CentOS example`` cluster, as shown in the red box below).
 Note, one can remove/delete this cluster if no longer needed by
 clicking the trash can shown in the red circle at right.
 
@@ -372,7 +374,7 @@ or accessing the cluster from your web terminal, you can start to clone, compile
 
    .. code-block:: console
 
-      cd /contrib/$USER/global-workflow #or cd /contrib/$USER/global-workflow-cloud depending on which one you cloned
+      cd /contrib/$USER/global-workflow   # or cd /contrib/$USER/global-workflow-cloud depending on which one you cloned
       cd sorc
       build_all.sh      # or similar command to compile for gefs, or others.
       link_workflow.sh  # after build_all.sh finished successfully
