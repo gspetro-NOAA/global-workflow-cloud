@@ -214,11 +214,11 @@ Attach CSP Lustre Filesystem
 ******************************
 
 Now we need to attach the defined filesystem to our cluster.
-Go back to our noaa.parallel.works web-site, and click `Cluster`
+Go back to the NOAA PW web-site, and click `Cluster`
 as shown in Figuer 11 below, then select the cluster "AWS EPIC Wei CentOS example"
-(it should be your own cluster) cluster as show in red-box.
+(it should be your own cluster) cluster as show in the red-box.
 Note, one can remove/delete this cluster if no longer needed by
-click the trash-can shown in the red-circle at right.
+clicking the trash-can shown in the red-circle at right.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_filesystem_1.png
    :name: noaacsp_filesystem_1
