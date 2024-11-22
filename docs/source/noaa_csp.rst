@@ -62,7 +62,7 @@ screen as in :numref:`Figure %s <pw-home>`. Click the blue box indicated by the 
 
    NOAA-PARALLELWORKS Home Page
 
-As shown in :numref:`Figure %s <login2>`, fill the ``Username / Email`` box with your username or NOAA email (usually in "FirstName.LastName" format).
+As shown in :numref:`Figure %s <login2>`, Fill the ``Username / Email`` box with your username or NOAA email (usually in "FirstName.LastName" format).
 Note that the ``Username or email`` query field is case-sensitive.
 Then enter the respective ``Pin + RSA`` combination using the same RSA token application used
 for access to other RDHPCS machines (e.g., Hera, Gaea).
@@ -410,7 +410,7 @@ or accessing the cluster from your web terminal, you can start to clone, compile
           --yaml ci/cases/pr/C48_ATM.yaml
 
       cd /lustre/$USER/run/EXPDIR/c48atm
-      crontab c48atm
+      crontab c48atm.crontab
 
 EPIC has copied the C48 and C96 ATM, GEFS, and some other data to AWS, and the current code has been set up to use those data.
 If users want to run their own case, they need to make changes to the IC path and others to make it work.
