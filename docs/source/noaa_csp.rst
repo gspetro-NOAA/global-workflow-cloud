@@ -158,8 +158,6 @@ at the top right, as shown in the red circle.
 
 .. _select-lustre:
 
-.. _select-lustre:
-
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_lustre_1.png
    :name: noaacsp_lustre_1
    :class: with-border
