@@ -330,7 +330,10 @@ As this cluster is exclusive for yourself, AWS keeps charging you as long as the
 For running global-workflow, one needs to keep the cluster active if there are any Rocoto jobs running
 because Rocoto uses `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
 
-.. _cluster-success:
+Please note, as soon as the cluster is activated, AWS/PW starts charging you for use of the cluster.
+As this cluster is exclusive for yourself, AWS will keep charging you as long as the cluster is active.
+For running global-workflow, one needs to keep the cluster active if there are any Rocoto jobs running,
+as Rocoto is using `crontab`, which needs the cluster active all the times, or the crontab job(s) will be terminated.
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_2.png
    :name: noaacsp_using_2
