@@ -314,7 +314,7 @@ the cluster varies and is not immediate; it may take several minutes (often 10-2
 
    Activate the Cluster
 
-When the cluster is activated, users will see the following indicators of success listed below as seen in :numref:`Figure %s <cluster-success>`:
+When the cluster is activated, users will see the following indicators of success listed below as seen in :numref:`Figure %s <cluster-on>`:
 
 #. A green dot on the left beside the AWS logo means that the cluster is active (indicated by red arrow 1).
 #. A green dot on the right labeled "active" means that the cluster is active (indicated by red arrow 2).
@@ -330,7 +330,7 @@ As this cluster is exclusive for yourself, AWS keeps charging you as long as the
 For running global-workflow, one needs to keep the cluster active if there are any Rocoto jobs running
 because Rocoto uses `crontab`, which needs the cluster active all the time, or the crontab job will be terminated.
 
-.. _cluster-success:
+.. _cluster-on:
 
 .. figure:: https://raw.githubusercontent.com/wiki/NOAA-EMC/global-workflow/images/noaacsp_using_2.png
    :name: noaacsp_using_2
